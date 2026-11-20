@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#f7f7f2" />
+<meta name="description" content="Srija Porandla — Senior Product Designer in Hyderabad, India. 5+ years designing enterprise and customer-facing web and mobile products." />
+<title>Srija Porandla — Senior Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f7f2;
+  --card:#ffffff;
+  --ink:#171916;
+  --forest:#1c231c;
+  --muted:#666b62;
+  --line:#e3e5dc;
+  --lime:#c9f36b;
+  --lime-deep:#8fc23a;
+  --soft:#eef4e4;
+  --teal:#007a73;
+  --amber:#f2b441;
+  --red:#e0603e;
+  --blue:#4f7cff;
+  --r:24px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --shadow:0 22px 60px rgba(26,31,20,.09);
+  --display:'Manrope',system-ui,sans-serif;
+  --body:'DM Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,p{margin:0}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+::selection{background:var(--lime);color:var(--ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1180px,calc(100% - 48px));margin:0 auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Ambient ---------- */
+.grid-bg{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-image:linear-gradient(to right,rgba(23,25,22,.035) 1px,transparent 1px),linear-gradient(to bottom,rgba(23,25,22,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse 85% 65% at 50% 15%,#000 30%,transparent 100%);
+          mask-image:radial-gradient(ellipse 85% 65% at 50% 15%,#000 30%,transparent 100%)}
+.spot{position:fixed;left:0;top:0;width:560px;height:560px;border-radius:50%;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle,rgba(201,243,107,.26) 0%,rgba(201,243,107,0) 68%);
+  transform:translate3d(-999px,-999px,0);opacity:0;transition:opacity .5s}
+.spot.on{opacity:1}
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);z-index:100;
+  background:linear-gradient(90deg,var(--lime-deep),var(--lime))}
+
+/* ---------- Nav ---------- */
+.nav-shell{position:fixed;top:16px;left:0;right:0;z-index:60;pointer-events:none}
+.nav{pointer-events:auto;width:min(1100px,calc(100% - 32px));margin:0 auto;min-height:64px;padding:9px 10px 9px 12px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid rgba(227,229,220,.9);border-radius:999px;
+  background:rgba(255,255,251,.82);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);
+  box-shadow:0 10px 34px rgba(30,35,25,.06);transition:width .45s var(--ease),min-height .45s var(--ease),box-shadow .45s,background .45s}
+.nav.condensed{width:min(940px,calc(100% - 32px));min-height:56px;background:rgba(255,255,251,.95);box-shadow:0 16px 40px rgba(24,30,20,.11)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;letter-spacing:-.03em;font-size:15px}
+.mark{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--lime);font-size:12.5px;font-weight:800;transition:transform .45s var(--spring)}
+.brand:hover .mark{transform:rotate(-12deg) scale(1.07)}
+.links{display:flex;gap:28px;font-size:13.5px;font-weight:500;color:#50574b}
+.links a{position:relative;padding:4px 0;transition:color .2s}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;border-radius:2px;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+.links a:hover,.links a.active{color:var(--ink)}
+.links a:hover::after,.links a.active::after{transform:scaleX(1);transform-origin:left}
+.nav-right{display:flex;align-items:center;gap:8px}
+.btn{border:0;border-radius:999px;padding:13px 22px;font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:8px;
+  transition:transform .35s var(--spring),background .25s,box-shadow .25s,color .25s;will-change:transform;white-space:nowrap}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#2c3328;box-shadow:0 12px 26px rgba(23,25,22,.18)}
+.btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:#cfd3c5;box-shadow:0 12px 26px rgba(23,25,22,.08)}
+.btn-lime{background:var(--lime);color:var(--ink)}
+.btn-lime:hover{box-shadow:0 12px 26px rgba(143,194,58,.35)}
+.btn .arr{display:inline-block;transition:transform .35s var(--ease)}
+.btn:hover .arr{transform:translate(2px,-2px)}
+.btn:hover .arr.down{transform:translate(2px,2px)}
+.nav .btn{padding:11px 18px;font-size:12.5px}
+.menu-toggle{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;place-items:center}
+.menu-toggle span{display:block;width:16px;height:2px;background:var(--ink);border-radius:2px;position:relative;transition:background .2s}
+.menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0;width:16px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease)}
+.menu-toggle span::before{top:-5px}.menu-toggle span::after{top:5px}
+.menu-open .menu-toggle span{background:transparent}
+.menu-open .menu-toggle span::before{transform:translateY(5px) rotate(45deg)}
+.menu-open .menu-toggle span::after{transform:translateY(-5px) rotate(-45deg)}
+
+/* ---------- Hero ---------- */
+.hero{padding:164px 0 40px}
+.hero-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pill-tag{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);
+  font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#4c5446;box-shadow:0 4px 14px rgba(24,30,20,.04)}
+.live{width:8px;height:8px;border-radius:50%;background:#6fae22;animation:pulse 2.2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(111,174,34,.45)}50%{box-shadow:0 0 0 7px rgba(111,174,34,0)}}
+.ticker{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:1px dashed #cfd3c5;font-size:12.5px;color:var(--muted)}
+.ticker-window{display:inline-block;height:1.45em;overflow:hidden;vertical-align:bottom;position:relative}
+.ticker-list{display:block;transition:transform .6s var(--ease)}
+.ticker-list b{display:block;height:1.45em;line-height:1.45em;color:var(--ink);font-family:var(--display);font-weight:700;white-space:nowrap}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(46px,8.2vw,108px);line-height:.98;letter-spacing:-.055em;margin:30px 0 28px;max-width:1000px}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .w>span{display:inline-block;transform:translateY(105%);animation:rise 1s var(--ease) forwards}
+@keyframes rise{to{transform:none}}
+.hl{position:relative;display:inline-block;padding:0 .16em .04em;margin-left:-.02em}
+.hl::before{content:"";position:absolute;inset:.06em 0 0;background:var(--lime);border-radius:.2em;transform:rotate(-2.2deg) scaleX(0);transform-origin:left;
+  animation:hlIn .8s .85s var(--ease) forwards;z-index:-1;box-shadow:0 10px 26px rgba(201,243,107,.55)}
+@keyframes hlIn{to{transform:rotate(-2.2deg) scaleX(1)}}
+.hl:hover::before{transform:rotate(1.5deg) scaleX(1);transition:transform .5s var(--spring)}
+.hero-sub{display:grid;grid-template-columns:minmax(0,1.1fr) auto;gap:40px;align-items:end}
+.hero-intro{font-size:clamp(17px,1.6vw,20px);line-height:1.6;color:#4c5148;max-width:620px}
+.hero-intro b{color:var(--ink);font-weight:600}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+.hero-cta .btn{padding:15px 24px;font-size:14px}
+.stats{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--r);background:rgba(255,255,255,.72);backdrop-filter:blur(8px)}
+.stat{padding:22px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat b{display:block;font-family:var(--display);font-size:clamp(22px,2.3vw,30px);letter-spacing:-.04em;line-height:1.1}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* Marquee */
+.marquee{margin-top:56px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-head{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.track{display:flex;gap:16px;width:max-content;animation:slide 48s linear infinite;padding:6px 0 16px}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.mini{width:252px;height:164px;flex:none;border-radius:20px;background:#fff;border:1px solid var(--line);padding:16px;font-size:11px;box-shadow:0 8px 22px rgba(24,30,20,.05);position:relative;overflow:hidden}
+.mini h5{margin:0 0 10px;font-family:var(--display);font-size:12.5px;display:flex;justify-content:space-between;align-items:center}
+.mini.dark{background:var(--forest);color:#eef3e6;border-color:var(--forest)}
+.mini.lime{background:var(--lime);border-color:#b7e055}
+
+/* ---------- Sections ---------- */
+section{position:relative}
+.section{padding:120px 0 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:40px;align-items:end;margin-bottom:44px}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#5c6455;margin-bottom:16px}
+.kicker::before{content:"";width:22px;height:2px;background:var(--ink);border-radius:2px}
+.h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-.05em}
+.sec-head p{color:var(--muted);font-size:17px;max-width:440px;justify-self:end}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+/* ---------- Work ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 16px;font-size:13px;font-weight:600;color:#4c5446;transition:all .25s var(--ease)}
+.filter:hover{border-color:#c8ccbf}
+.filter[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.filter small{opacity:.6;margin-left:4px;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:12px;cursor:pointer;display:flex;flex-direction:column;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .3s,opacity .4s;transform-style:preserve-3d;text-align:left}
+.card:hover{box-shadow:0 30px 70px rgba(26,31,20,.12);border-color:#d6dacb}
+.card.featured{grid-column:1/-1;display:grid;grid-template-columns:1.35fr 1fr;gap:12px}
+.card.hide{display:none}
+.card-art{border-radius:20px;overflow:hidden;position:relative}
+.card-body{padding:22px 14px 12px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card.featured .card-body{padding:30px 26px;justify-content:space-between}
+.card-meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.02em}
+.card h3{font-family:var(--display);font-weight:800;font-size:clamp(22px,2.1vw,28px);letter-spacing:-.04em;line-height:1.1}
+.card.featured h3{font-size:clamp(26px,2.8vw,38px)}
+.card p{color:var(--muted);font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11.5px;font-weight:600;padding:6px 10px;border-radius:999px;background:var(--paper);border:1px solid var(--line);color:#4b5345}
+.card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:6px}
+.go{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:16px;transition:transform .4s var(--spring),background .3s}
+.card:hover .go{transform:rotate(45deg);background:var(--lime);color:var(--ink)}
+.nda-chip{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6b705f;display:inline-flex;gap:6px;align-items:center}
+.nda-chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--amber)}
+
+/* ---------- Mock UI system (em-scaled) ---------- */
+.mock{position:relative;aspect-ratio:16/10.4;overflow:hidden;font-family:var(--body);color:var(--ink);line-height:1.3}
+/* Each mock is laid out on a fixed canvas, then scaled as one picture so nothing reflows or clips at small sizes */
+.stage{position:absolute;left:0;top:0;width:640px;height:416px;font-size:11px;transform-origin:0 0}
+.card.featured .mock{height:100%;aspect-ratio:auto;min-height:420px}
+.bg-lime{background:radial-gradient(120% 90% at 0% 0%,#e6f7bf 0%,#d4ee95 45%,#c9f36b 100%)}
+.bg-sage{background:radial-gradient(120% 90% at 100% 0%,#eef2e6 0%,#dfe6d3 60%,#d3dcc4 100%)}
+.bg-forest{background:radial-gradient(120% 90% at 0% 100%,#2b3a2a 0%,#1c231c 60%,#141913 100%)}
+.bg-sand{background:radial-gradient(120% 90% at 100% 100%,#f3efe2 0%,#ebe5d2 60%,#e2dac2 100%)}
+.bg-mist{background:radial-gradient(120% 90% at 0% 0%,#e9f1ef 0%,#d8e7e3 60%,#c9dcd7 100%)}
+.app{position:absolute;left:6%;top:9%;right:20%;bottom:-8%;background:#fff;border-radius:1.2em;box-shadow:0 2em 4em rgba(20,25,15,.18);display:grid;grid-template-columns:4.2em 1fr;overflow:hidden;
+  transition:transform .7s var(--ease)}
+.app.full{right:6%}
+.card:hover .app{transform:translateY(-.6em)}
+.side{background:var(--forest);padding:1.2em 0;display:flex;flex-direction:column;align-items:center;gap:1em}
+.side i{width:1.6em;height:1.6em;border-radius:.5em;background:rgba(255,255,255,.12);display:block}
+.side i.on{background:var(--lime)}
+.side i.logo{border-radius:50%;background:var(--lime);margin-bottom:.6em}
+.main{padding:1.3em 1.4em;display:flex;flex-direction:column;gap:1em;min-width:0}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:1em}
+.topbar b{font-family:var(--display);font-size:1.45em;letter-spacing:-.03em}
+.topbar small{display:block;color:var(--muted);font-size:.85em;font-weight:500}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.8em}
+.kpis.k4{grid-template-columns:repeat(4,1fr)}
+.kpi{border:1px solid var(--line);border-radius:.9em;padding:.8em .9em;min-width:0}
+.kpi.hot{background:var(--forest);color:#fff;border-color:var(--forest)}
+.kpi.lm{background:var(--lime);border-color:var(--lime)}
+.kpi small{display:block;font-size:.82em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi.hot small{color:#b8c2ad}
+.kpi b{display:block;font-family:var(--display);font-size:1.75em;letter-spacing:-.04em;margin-top:.15em}
+.kpi em{font-style:normal;font-size:.8em;font-weight:700;color:#5d8f1c}
+.kpi.hot em{color:var(--lime)}
+.panel{border:1px solid var(--line);border-radius:.9em;padding:.9em 1em;min-width:0}
+.ph{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:1.05em;margin-bottom:.5em}
+.ph span{font-size:.8em;color:var(--muted);font-weight:600}
+.row{display:flex;align-items:center;gap:.7em;padding:.55em 0;border-top:1px solid #f0f1ea;font-size:.95em}
+.row:first-of-type{border-top:0}
+.row .grow{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .grow small{color:var(--muted);margin-left:.3em}
+.av{width:2em;height:2em;border-radius:50%;display:grid;place-items:center;font-size:.75em;font-weight:800;background:var(--soft);flex:none}
+.b{display:inline-flex;align-items:center;gap:.35em;font-size:.78em;font-weight:700;padding:.3em .7em;border-radius:99px;white-space:nowrap;flex:none}
+.b::before{content:"";width:.5em;height:.5em;border-radius:50%;background:currentColor;opacity:.8}
+.b.ok{background:#e7f6d2;color:#3f7a0f}
+.b.warn{background:#fdf0d4;color:#9a6408}
+.b.bad{background:#fbe3dc;color:#b2401f}
+.b.info{background:#e3ebff;color:#2f55c7}
+.b.mute{background:#eef0ea;color:#5d6358}
+.b.dk{background:var(--forest);color:var(--lime)}
+.bars{display:flex;align-items:flex-end;gap:.4em;height:5.5em}
+.bars span{flex:1;border-radius:.3em .3em .1em .1em;background:#dfe7d0}
+.bars span.on{background:var(--lime-deep)}
+.bars span.dk{background:var(--forest)}
+.two{display:grid;grid-template-columns:1.4fr 1fr;gap:.8em;min-width:0}
+.line-chart{width:100%;height:5.5em;display:block}
+.phone{position:absolute;right:5%;top:15%;width:25%;aspect-ratio:9/18.5;background:#fff;border-radius:2em;border:.5em solid #161a14;box-shadow:0 2.2em 4.5em rgba(20,25,15,.3);
+  overflow:hidden;padding:1.4em .9em .9em;display:flex;flex-direction:column;gap:.7em;transition:transform .7s var(--ease)}
+.phone::before{content:"";position:absolute;top:.5em;left:50%;width:30%;height:.7em;transform:translateX(-50%);background:#161a14;border-radius:1em}
+.card:hover .phone{transform:translateY(-1em) rotate(-1.5deg)}
+.phone .ttl{font-family:var(--display);font-weight:800;font-size:1.2em;letter-spacing:-.03em;margin-top:.4em}
+.pass{border-radius:1em;padding:.9em;color:#fff;background:#184d3b;display:flex;flex-direction:column;gap:.5em}
+.pass small{opacity:.75;font-size:.75em}
+.pass b{font-family:var(--display);font-size:1.1em}
+.pass .qr{background:#fff;border-radius:.5em;padding:.35em;width:58%;align-self:center}
+.pass .qr svg{display:block;width:100%;height:auto}
+.seg{display:flex;gap:.25em;background:#f0f2ea;border-radius:99px;padding:.25em}
+.seg span{flex:1;text-align:center;font-size:.75em;font-weight:700;padding:.35em 0;border-radius:99px;color:var(--muted)}
+.seg span.on{background:#fff;color:var(--ink);box-shadow:0 .2em .5em rgba(0,0,0,.06)}
+.float{position:absolute;background:#fff;border-radius:1em;box-shadow:0 1.6em 3.4em rgba(20,25,15,.22);padding:1em 1.1em;transition:transform .7s var(--ease)}
+.card:hover .float{transform:translateY(-.8em)}
+.field{border:1px solid var(--line);border-radius:.6em;padding:.55em .7em;font-size:.9em;display:flex;justify-content:space-between;gap:.5em;background:#fcfcf9}
+.field.err{border-color:#e9a08a;background:#fff7f4}
+.field.okf{border-color:#b6dc86;background:#f8fdf0}
+.minibtn{display:inline-flex;justify-content:center;align-items:center;padding:.6em 1em;border-radius:99px;font-weight:700;font-size:.85em;background:var(--ink);color:#fff}
+.minibtn.l{background:var(--lime);color:var(--ink)}
+.minibtn.g{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.gauge{width:100%;aspect-ratio:1;display:block}
+/* Park theme (from the park's own brand: forest, teal, lime, cream) */
+.park .side{background:#184d3b}
+.park .side i.logo,.park .side i.on{background:#c9f36b}
+.park .kpi.hot{background:#184d3b;border-color:#184d3b}
+.park .kpi.lm{background:#dff7a8;border-color:#cdeb8a}
+.park .minibtn{background:#1f4a3a}
+.park .minibtn.l{background:#c9f36b;color:#173b2c}
+.park .bars span{background:#d7e3d3}.park .bars span.on{background:#007a73}
+.park .topbar b{color:#173b2c}
+.bg-park{background:linear-gradient(160deg,#f6f5ee 0%,#e9eee2 100%)}
+.bg-parkdk{background:radial-gradient(120% 100% at 20% 0%,#285a45 0%,#184d3b 50%,#10362a 100%)}
+.park-site{background:#172417}
+.map{position:absolute;inset:0;width:100%;height:100%;display:block}
+.pk-banner{position:absolute;left:0;right:0;top:0;z-index:2;background:#184d3b;color:#e4ede2;font-size:.92em;display:flex;align-items:center;justify-content:center;gap:.9em;padding:.6em 1em;white-space:nowrap}
+.pk-banner b{color:#fff}
+.pk-btn{display:inline-flex;align-items:center;gap:.4em;background:#c9f36b;color:#173b2c;font-weight:700;border-radius:99px;padding:.55em 1.1em;font-size:.95em;white-space:nowrap}
+.pk-btn.dk{background:#121812;color:#fff}
+.pk-nav{position:absolute;left:3%;right:3%;top:3.4em;z-index:2;background:rgba(238,241,233,.93);border-radius:1.1em;display:flex;align-items:center;justify-content:space-between;gap:1em;padding:.55em .9em}
+.pk-logo{display:flex;align-items:center;gap:.35em;color:#1f4a3a;font-size:.72em;line-height:1;letter-spacing:.04em}
+.pk-logo b{display:block;font-size:1.4em;font-weight:500;letter-spacing:.01em}
+.pk-logo svg{width:2.6em;height:2.6em}
+.pk-links{display:flex;gap:1.2em;font-size:.88em;color:#3a4a3c;overflow:hidden}
+.pk-links span{white-space:nowrap}
+.pk-links .on{background:#1f4a3a;color:#fff;border-radius:99px;padding:.3em .85em;margin:-.3em 0}
+.pk-av{width:2.3em;height:2.3em;border-radius:50%;background:#1f4a3a;color:#fff;display:grid;place-items:center;font-weight:700;font-size:.85em;flex:none}
+.pk-hero{position:absolute;left:6%;top:9.6em;width:62%;color:#fff;z-index:1}
+.pk-hero small{color:#c9f36b;letter-spacing:.22em;font-weight:700;font-size:.82em;font-family:var(--display)}
+.pk-hero h6{margin:.35em 0 .3em;font-family:var(--display);font-weight:800;font-size:4.3em;line-height:.98;letter-spacing:-.045em}
+.grad{background:linear-gradient(90deg,#0d7f6e 0%,#1fbf8f 45%,#a8ee5e 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pk-hero p{font-size:1.2em;color:rgba(255,255,255,.82);margin:0 0 1em}
+.pk-hero div{display:flex;gap:.6em}
+.serif{font-family:'Newsreader',Georgia,serif;font-weight:400}
+.pk-photo{position:absolute;left:3%;top:5%;bottom:5%;width:47%;border-radius:1.4em;overflow:hidden;color:#fff;padding:1.5em 1.6em;display:flex;flex-direction:column;justify-content:space-between}
+.pk-photo>*{position:relative;z-index:1}
+.pk-photo .scene{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.pk-tile{width:3.2em;height:3.2em;border-radius:.8em;display:grid;place-items:center;background:rgba(255,255,255,.14);backdrop-filter:blur(4px)}
+.pk-tile.lt{background:#e5eedf}
+.pk-form{position:absolute;left:55%;right:5%;top:7%;bottom:5%;display:flex;flex-direction:column;gap:.5em;justify-content:center;color:#173b2c}
+.pk-form .field{background:#fff;padding:.8em .9em}
+.pk-form label{font-size:.85em;font-weight:700;color:#2b3a2e}
+.pk-signin{background:#2b5e43;color:#fff;border-radius:.6em;text-align:center;font-weight:700;padding:.85em;margin-top:.3em}
+.otp{display:flex;gap:.35em}
+.otp span{flex:1;aspect-ratio:1/1.15;border:1px solid #cfd8c9;border-radius:.5em;display:grid;place-items:center;font-weight:800;font-family:var(--display);background:#fff;font-size:1.1em}
+.otp span.f{border-color:#1f4a3a;box-shadow:0 0 0 .2em rgba(201,243,107,.6)}
+.cap{position:absolute;left:5%;bottom:5%;font-size:1em;font-weight:700;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:.45em .9em;border-radius:99px;color:#3d4438}
+
+/* ---------- About ---------- */
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:22px}
+.about-feature{position:relative;overflow:hidden;border-radius:32px;background:var(--forest);color:#eef3e6;padding:clamp(30px,4vw,52px);min-height:520px;display:flex;flex-direction:column;justify-content:space-between}
+.about-feature h3{font-family:var(--display);font-weight:800;font-size:clamp(32px,3.8vw,52px);line-height:1.02;letter-spacing:-.05em;max-width:440px;position:relative;z-index:1}
+.about-feature h3 em{font-style:normal;color:var(--lime)}
+.about-feature p{color:#b9c3af;max-width:520px;margin-top:14px}
+.about-feature h3 em{text-decoration:underline;text-decoration-thickness:.07em;text-underline-offset:.12em}
+.process{margin-top:40px;border-top:1px solid rgba(255,255,255,.14);padding-top:18px}
+.process-label{font-size:12px;color:#8f9a85;letter-spacing:.04em}
+.process ol{list-style:none;margin:12px 0 0;padding:0;counter-reset:p}
+.process li{counter-increment:p;position:relative;padding:9px 0 9px 34px;border-bottom:1px solid rgba(255,255,255,.08);font-size:15px;color:#b9c3af}
+.process li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:12px;color:var(--lime);font-size:12px;font-weight:700}
+.process li b{color:#eef3e6;font-weight:600}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.trait{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 24px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;min-height:200px}
+.trait.lime{background:var(--lime);border-color:#b7e055}
+.trait.lime p{color:#33402a}
+.trait h4{font-family:var(--display);font-size:21px;letter-spacing:-.03em}
+.trait p{color:var(--muted);font-size:14.5px}
+
+/* ---------- Experience ---------- */
+.exp{background:#fff;border:1px solid var(--line);border-radius:32px;padding:clamp(26px,3.4vw,44px);display:grid;grid-template-columns:.9fr 1.6fr;gap:40px}
+.exp-co{display:flex;flex-direction:column;gap:10px}
+.exp-co .logo{width:58px;height:58px;border-radius:18px;background:var(--forest);color:var(--lime);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:18px;margin-bottom:12px}
+.exp-co h3{font-family:var(--display);font-size:26px;letter-spacing:-.04em;line-height:1.1}
+.exp-co .role{color:var(--muted)}
+.when{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;margin-top:6px;font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:99px;background:var(--lime)}
+.exp-hl{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.hl-item{border-radius:22px;background:var(--paper);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:10px}
+.hl-item .n{font-family:var(--display);font-weight:800;font-size:13px;color:#8a9081}
+.hl-item h4{font-family:var(--display);font-size:18px;letter-spacing:-.03em;line-height:1.2}
+.hl-item p{font-size:14px;color:var(--muted)}
+.caps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:22px}
+.cap-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:26px;transition:transform .45s var(--ease),box-shadow .45s}
+.cap-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.cap-card.dark{background:var(--forest);color:#eef3e6;border-color:var(--forest)}
+.cap-card h4{font-family:var(--display);font-size:19px;letter-spacing:-.03em;margin-bottom:18px;display:flex;justify-content:space-between;align-items:center}
+.cap-card h4 span{font-size:12px;color:#8a9081;font-weight:700}
+.cap-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.cap-card li{font-size:14.5px;color:#4c5148;display:flex;gap:10px;align-items:flex-start}
+.cap-card li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lime-deep);margin-top:.55em;flex:none}
+.cap-card.dark li{color:#c9d2bf}
+.cap-card.dark li::before{background:var(--lime)}
+
+/* ---------- Contact ---------- */
+.contact{display:grid;grid-template-columns:1fr 1.05fr;gap:22px;align-items:stretch}
+.contact-card{background:var(--lime);border-radius:32px;padding:clamp(30px,4vw,52px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;position:relative;overflow:hidden}
+.contact-card::after{content:"";position:absolute;right:-120px;bottom:-120px;width:340px;height:340px;border-radius:50%;border:1px solid rgba(23,25,22,.15);box-shadow:0 0 0 40px rgba(23,25,22,.03),0 0 0 80px rgba(23,25,22,.025)}
+.contact-card h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,4.6vw,62px);line-height:1;letter-spacing:-.055em}
+.contact-card>div>p{margin-top:16px;font-size:17px;color:#33402a;max-width:400px}
+.details{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+.detail{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.55);border:1px solid rgba(23,25,22,.08);border-radius:18px;padding:14px 16px;transition:background .25s}
+.detail:hover{background:rgba(255,255,255,.85)}
+.detail small{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#56633f}
+.detail a,.detail span.v{font-weight:700;font-family:var(--display);font-size:16px;word-break:break-all}
+.copy{border:1px solid rgba(23,25,22,.15);background:#fff;border-radius:99px;padding:7px 12px;font-size:12px;font-weight:700;flex:none;transition:background .2s}
+.copy:hover{background:var(--ink);color:#fff}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:32px;padding:clamp(26px,3.4vw,44px);position:relative}
+.form-card h3{font-family:var(--display);font-size:26px;letter-spacing:-.04em}
+.form-card .sub{color:var(--muted);font-size:15px;margin:6px 0 24px}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f{display:flex;flex-direction:column;gap:7px}
+.f.full{grid-column:1/-1}
+.f label{font-size:13px;font-weight:700}
+.f label i{font-style:normal;color:var(--muted);font-weight:500}
+.f input,.f select,.f textarea{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:13px 14px;font-size:15px;transition:border-color .2s,box-shadow .2s,background .2s;outline:none}
+.f textarea{min-height:140px;resize:vertical}
+.f select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#666b62 50%),linear-gradient(135deg,#666b62 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:36px}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--ink);background:#fff;box-shadow:0 0 0 4px rgba(201,243,107,.55)}
+.f.bad input,.f.bad select,.f.bad textarea{border-color:#d9714f;background:#fff8f5}
+.f.good input,.f.good select,.f.good textarea{border-color:#9fcf5e}
+.msg{font-size:12.5px;min-height:1.2em;color:#b2401f;display:flex;justify-content:space-between}
+.msg .count{color:var(--muted);margin-left:auto}
+.form-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:18px;flex-wrap:wrap}
+.form-foot small{color:var(--muted);font-size:12.5px;max-width:300px}
+.send-err{margin-top:14px;padding:12px 14px;border-radius:14px;background:#fff4ef;border:1px solid #f1c3b3;color:#7a3a25;font-size:14px}
+.send-err a{text-decoration:underline;font-weight:700}
+.btn.busy{opacity:.7;cursor:progress}
+.done{display:none;flex-direction:column;gap:16px;min-height:100%;justify-content:center}
+.form-card.sent form{display:none}
+.form-card.sent .done{display:flex;animation:fadeUp .6s var(--ease)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.done .tick{width:64px;height:64px;border-radius:50%;background:var(--lime);display:grid;place-items:center}
+.done .tick path{stroke-dasharray:40;stroke-dashoffset:40;animation:draw .6s .25s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.done h3{font-size:30px}
+.done pre{white-space:pre-wrap;font-family:var(--body);font-size:13.5px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;margin:0;color:#3d4438;max-height:180px;overflow:auto}
+.done .acts{display:flex;gap:8px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:99px;font-size:13.5px;font-weight:600;z-index:200;transition:transform .45s var(--spring);box-shadow:0 14px 30px rgba(0,0,0,.2)}
+.toast.show{transform:translate(-50%,0)}
+
+/* ---------- Footer ---------- */
+footer{margin-top:120px;border-top:1px solid var(--line);padding:30px 0 40px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:13.5px;color:var(--muted)}
+.foot a{font-weight:700;color:var(--ink);display:inline-flex;gap:6px;align-items:center}
+.foot a:hover span{transform:translateY(-3px)}
+.foot a span{transition:transform .3s var(--spring)}
+
+/* ---------- Case drawer ---------- */
+.scrim{position:fixed;inset:0;background:rgba(20,24,18,.42);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:80;opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(1080px,100%);background:var(--paper);z-index:90;transform:translateX(102%);transition:transform .6s var(--ease);
+  display:flex;flex-direction:column;box-shadow:-30px 0 80px rgba(0,0,0,.18);border-radius:28px 0 0 28px;overflow:hidden;visibility:hidden;transition:transform .6s var(--ease),visibility 0s .6s}
+.case-open .scrim{opacity:1;pointer-events:auto}
+.case-open .drawer{transform:none;visibility:visible;transition:transform .6s var(--ease),visibility 0s}
+.case-open{overflow:hidden}
+.d-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px;border-bottom:1px solid var(--line);background:rgba(247,247,242,.92);backdrop-filter:blur(12px)}
+.d-bar .idx{font-size:12.5px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.d-bar .acts{display:flex;gap:8px;align-items:center}
+.icon-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:16px;transition:background .2s,transform .3s var(--spring)}
+.icon-btn:hover{background:var(--ink);color:#fff;transform:scale(1.05)}
+.d-progress{height:2px;background:var(--line)}
+.d-progress i{display:block;height:100%;width:100%;background:var(--ink);transform-origin:0 50%;transform:scaleX(0)}
+.d-scroll{overflow-y:auto;flex:1;overscroll-behavior:contain}
+.d-inner{padding:44px clamp(20px,4.5vw,60px) 70px;max-width:1000px;margin:0 auto}
+.d-hero h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,58px);letter-spacing:-.05em;line-height:1.02;margin:16px 0 16px}
+.d-hero .lead{font-size:18px;color:#4c5148;max-width:720px}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:20px;background:#fff;margin:30px 0}
+.meta div{padding:16px 18px;border-left:1px solid var(--line)}
+.meta div:first-child{border-left:0}
+.meta small{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a9081;margin-bottom:4px}
+.meta span{font-size:14px;font-weight:600}
+.d-shot{border-radius:24px;overflow:hidden;border:1px solid var(--line)}
+
+.nda{display:flex;gap:14px;align-items:flex-start;background:#fff8e6;border:1px solid #f1deaa;border-radius:18px;padding:16px 18px;margin-top:22px;font-size:14px;color:#5e4c17}
+.nda b{color:#3d3108}
+.blk{padding:56px 0 0}
+.blk-h{display:grid;grid-template-columns:200px 1fr;gap:28px;margin-bottom:22px}
+.blk-h .num{font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#8a9081;padding-top:8px}
+.blk-h h3{font-family:var(--display);font-weight:800;font-size:clamp(24px,2.6vw,34px);letter-spacing:-.045em;line-height:1.1}
+.blk-body{margin-left:228px}
+.blk-body p{color:#4c5148;font-size:16.5px;margin-bottom:12px;max-width:720px}
+.objective{background:var(--forest);color:#eef3e6;border-radius:24px;padding:28px 30px;font-family:var(--display);font-size:clamp(19px,2vw,24px);font-weight:700;letter-spacing:-.03em;line-height:1.35;position:relative;overflow:hidden}
+.objective::after{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;background:var(--lime);opacity:.9}
+.objective span{position:relative;z-index:1;display:block;max-width:85%}
+.pains{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.pain{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}
+.pain .pn{font-family:var(--display);font-weight:800;font-size:12px;color:#b2401f;background:#fbe3dc;border-radius:99px;padding:3px 9px;display:inline-block;margin-bottom:10px}
+.pain h4{font-family:var(--display);font-size:17px;letter-spacing:-.02em;margin-bottom:6px}
+.pain p{font-size:14.5px;color:var(--muted);margin:0}
+.lanes{display:flex;flex-direction:column;gap:12px}
+.lane{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center}
+.lane-name{font-family:var(--display);font-weight:800;font-size:14px;line-height:1.2}
+.lane-name small{display:block;font-family:var(--body);font-weight:500;color:var(--muted);font-size:12px;margin-top:2px}
+.steps{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.st{font-size:12.5px;font-weight:600;padding:7px 11px;border-radius:10px;background:var(--paper);border:1px solid var(--line)}
+.st.dec{background:#fff8e6;border-color:#f1deaa;border-radius:4px 14px 4px 14px}
+.st.end{background:var(--lime);border-color:#b7e055}
+.st.sys{background:#eef3ff;border-color:#d4dffb}
+.ar{color:#a3a89a;font-size:12px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:12px}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.legend i{width:12px;height:12px;border-radius:3px;border:1px solid var(--line);display:inline-block}
+.states{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+.state{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}
+.state h5{margin:0 0 10px;font-size:13px;font-family:var(--display)}
+.state div{display:flex;flex-wrap:wrap;gap:6px;font-size:13px}
+.sol{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center;padding:26px 0;border-top:1px solid var(--line)}
+.sol:first-child{border-top:0;padding-top:0}
+.sol:nth-child(even) .sol-shot{order:2}
+.sol-shot{border-radius:22px;overflow:hidden;border:1px solid var(--line)}
+.sol-shot .mock{aspect-ratio:4/3}
+.sol h4{font-family:var(--display);font-size:22px;letter-spacing:-.035em;line-height:1.15;margin:6px 0 10px}
+.sol .sn{font-size:12px;font-weight:800;letter-spacing:.08em;color:#8a9081;text-transform:uppercase}
+.sol p{color:#4c5148;font-size:15.5px;margin-bottom:12px}
+.sol ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.sol li{font-size:14.5px;color:#4c5148;padding-left:22px;position:relative}
+.sol li::before{content:"";position:absolute;left:0;top:.5em;width:12px;height:7px;border-left:2px solid #5d8f1c;border-bottom:2px solid #5d8f1c;transform:rotate(-45deg)}
+.beyond{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.by{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.by small{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#5d8f1c}
+.by h5{margin:0;font-family:var(--display);font-size:15.5px;letter-spacing:-.02em}
+.by p{margin:0;font-size:13.5px;color:var(--muted)}
+.research{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+.research>div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}
+.research span{font-family:var(--display);font-weight:800;font-size:12px;color:#3f7a0f;background:#e7f6d2;border-radius:99px;padding:3px 9px;display:inline-block;margin-bottom:10px}
+.research h4{font-family:var(--display);font-size:16px;letter-spacing:-.02em;margin:0 0 6px}
+.research p{font-size:14px;color:var(--muted);margin:0}
+.diamond{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;margin-top:6px}
+.diamond svg{width:100%;height:auto;display:block}
+.phases{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:16px}
+.phases small{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#5d8f1c;margin-bottom:4px}
+.phases p{font-size:13.5px;color:var(--muted);margin:0}
+.outcome{background:var(--lime);border-radius:26px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.outcome h4{font-family:var(--display);font-size:24px;letter-spacing:-.04em;line-height:1.15}
+.outcome ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.outcome li{font-size:15px;padding-left:22px;position:relative;color:#26301c}
+.outcome li::before{content:"→";position:absolute;left:0;font-weight:800}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.nums div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}
+.nums b{display:block;font-family:var(--display);font-size:30px;letter-spacing:-.05em}
+.nums span{font-size:13px;color:var(--muted)}
+.kpi-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.kpi-list div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}
+.kpi-list h5{margin:0 0 6px;font-family:var(--display);font-size:15px}
+.kpi-list p{font-size:13.5px;color:var(--muted);margin:0}
+.next{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.next button{border:1px solid var(--line);background:#fff;border-radius:22px;padding:10px;text-align:left;display:flex;flex-direction:column;gap:12px;transition:transform .45s var(--ease),box-shadow .45s}
+.next button:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.next .mock{border-radius:14px;aspect-ratio:16/8}
+.next .nb{display:flex;justify-content:space-between;align-items:center;padding:4px 8px 8px;gap:10px}
+.next small{display:block;color:var(--muted);font-size:12px}
+.next b{font-family:var(--display);font-size:17px;letter-spacing:-.03em}
+
+/* Sandbox */
+.sandbox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.sandbox .f input{background:#fff}
+.sb-seg{display:flex;gap:6px;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:4px}
+.sb-seg button{flex:1;border:0;background:transparent;border-radius:99px;padding:9px 10px;font-size:13px;font-weight:700;color:var(--muted)}
+.sb-seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.sb-out{background:var(--forest);color:#eef3e6;border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.sb-status{font-size:13.5px;font-weight:700;padding:10px 12px;border-radius:12px;background:rgba(201,243,107,.14);color:var(--lime)}
+.sb-status.err{background:rgba(224,96,62,.18);color:#ffb39b}
+.sb-out small{color:#9ea993;font-size:12px;display:block}
+.sb-out .big{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-.04em}
+.tranches{display:flex;flex-direction:column;gap:8px}
+.tr{display:flex;justify-content:space-between;font-size:14px;padding:10px 12px;border:1px solid rgba(255,255,255,.12);border-radius:12px}
+.sb-note{grid-column:1/-1;font-size:12.5px;color:var(--muted)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1020px){
+  .caps{grid-template-columns:1fr 1fr}
+  .exp{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr}
+  .blk-h{grid-template-columns:1fr;gap:6px}
+  .blk-body{margin-left:0}
+  .beyond{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .links{position:fixed;left:16px;right:16px;top:90px;flex-direction:column;gap:0;background:#fff;border:1px solid var(--line);border-radius:24px;padding:10px;box-shadow:var(--shadow);
+    opacity:0;transform:translateY(-10px);pointer-events:none;transition:opacity .3s,transform .4s var(--ease)}
+  .menu-open .links{opacity:1;transform:none;pointer-events:auto}
+  .links a{padding:14px 14px;font-size:16px;border-radius:14px}
+  .links a::after{display:none}
+  .links a:hover{background:var(--paper)}
+  .menu-toggle{display:grid}
+  .nav .btn-dark{display:none}
+  .hero-sub{grid-template-columns:1fr;gap:28px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--line)}
+  .sec-head{grid-template-columns:1fr;gap:14px}
+  .sec-head p{justify-self:start}
+  .grid{grid-template-columns:1fr}
+  .card.featured{display:flex}
+  .card.featured .mock{min-height:0;aspect-ratio:16/11}
+  .contact{grid-template-columns:1fr}
+  .exp-hl{grid-template-columns:1fr}
+  .meta{grid-template-columns:1fr 1fr}
+  .meta div:nth-child(3){border-left:0}
+  .meta div:nth-child(n+3){border-top:1px solid var(--line)}
+  .pains,.kpi-list,.next,.outcome,.sandbox,.research{grid-template-columns:1fr}
+  .phases{grid-template-columns:1fr 1fr}
+  .sol{grid-template-columns:1fr}
+  .sol:nth-child(even) .sol-shot{order:0}
+  .lane{grid-template-columns:1fr;gap:10px}
+  .nums{grid-template-columns:1fr 1fr}
+  .drawer{border-radius:0}
+}
+@media (max-width:560px){
+  .wrap{width:calc(100% - 32px)}
+  .hero{padding-top:130px}
+  .caps,.about-grid,.beyond,.f-grid{grid-template-columns:1fr}
+  .about-feature{min-height:460px}
+  .orbit{width:300px;height:300px;right:-140px;top:auto;bottom:-120px;transform:none}
+  .brand>span:last-child{display:none}
+  .stat{padding:18px}
+  .hero-cta .btn{flex:1;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .hero h1 .w>span{transform:none}
+  .hl::before{transform:rotate(-2.2deg)}
+  .reveal{opacity:1;transform:none}
+  .track{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="spot" id="spot" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<a href="#work" class="sr">Skip to selected work</a>
+
+<!-- NAV -->
+<header class="nav-shell" id="navShell">
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a class="brand" href="#top" aria-label="Srija Porandla, back to top"><span class="mark">SP</span><span>Srija Porandla</span></a>
+    <div class="links" id="links">
+      <a href="#work">Selected work</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-dark magnetic" href="#contact">Let's talk <span class="arr">↗</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="links"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <span class="pill-tag"><i class="live"></i>Senior Product Designer · Hyderabad, India</span>
+      <span class="ticker" aria-live="polite">Focused on
+        <span class="ticker-window"><span class="ticker-list" id="tickerList">
+          <b>Enterprise SaaS &amp; Workflows</b>
+          <b>Multi-Role Web &amp; Mobile Apps</b>
+          <b>Data-Rich Operational Dashboards</b>
+          <b>Scalable Design Systems</b>
+          <b>Enterprise SaaS &amp; Workflows</b>
+        </span></span>
+      </span>
+    </div>
+    <h1 id="headline" aria-label="Making complex products feel simple.">
+      <span class="w"><span>Making</span></span> <span class="w"><span>complex</span></span><br>
+      <span class="w"><span>products</span></span> <span class="w"><span>feel</span></span> <span class="w" style="padding:.14em .12em .2em;margin:-.14em -.12em -.2em"><span><span class="hl">simple.</span></span></span>
+    </h1>
+    <div class="hero-sub">
+      <p class="hero-intro reveal">Hi, I'm Srija — a product designer with <b>5+ years of experience</b> turning complex business requirements into <b>clear workflows, thoughtful interfaces and scalable product experiences</b> across web and mobile, for enterprise teams and the customers they serve.</p>
+      <div class="hero-cta reveal d1">
+        <a class="btn btn-dark magnetic" href="#work">Explore my work <span class="arr down">↘</span></a>
+        <a class="btn btn-ghost magnetic" href="#contact">Get in touch <span class="arr">↗</span></a>
+      </div>
+    </div>
+    <div class="stats reveal d2">
+      <div class="stat"><b>5+ Years</b><span>Designing digital products</span></div>
+      <div class="stat"><b>Web &amp; Mobile</b><span>Responsive multi-role platforms</span></div>
+      <div class="stat"><b>End-to-End</b><span>IA, flows, prototypes &amp; handoff</span></div>
+      <div class="stat"><b>Systems &amp; Scale</b><span>Enterprise workflows &amp; dashboards</span></div>
+    </div>
+  </div>
+  <div class="wrap marquee-head reveal d3" style="margin-top:56px;margin-bottom:-40px"><span>A glimpse of the products I design</span><span>Hover to pause</span></div>
+  <div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
+</section>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="reveal"><div class="kicker">01 / Selected work</div><h2 class="h2">A few things I've helped make better.</h2></div>
+      <p class="reveal d1">Enterprise and customer-facing products across permits, bookings, loyalty, flight operations and energy services. Click any project for the full case study.</p>
+    </div>
+    <div class="filters reveal" role="group" aria-label="Filter projects" id="filters">
+      <button class="filter" data-f="all" aria-pressed="true">All Projects <small>5</small></button>
+      <button class="filter" data-f="enterprise" aria-pressed="false">Enterprise &amp; SaaS</button>
+      <button class="filter" data-f="mobile" aria-pressed="false">Web &amp; Mobile</button>
+      <button class="filter" data-f="operations" aria-pressed="false">Operations &amp; Service</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="reveal"><div class="kicker">02 / About</div><h2 class="h2">Designing with clarity, care and context.</h2></div>
+      <p class="reveal d1">I enjoy untangling complex requirements and bringing people, processes and interfaces into alignment.</p>
+    </div>
+    <div class="about">
+      <div class="about-feature reveal">
+        <div>
+          <h3>I make the complicated feel <em>considered.</em></h3>
+          <p>Most of my projects start with a long requirements document and a lot of “what happens if…” questions. I want to know how the whole system behaves before I draw a screen, because that's usually where the hard problems are.</p>
+          <p>I stay involved after handoff too: reviewing builds, chasing edge cases, and adjusting when real data doesn't look like the mockups.</p>
+        </div>
+        <div class="process">
+          <span class="process-label">My 5D process, built on the Double Diamond</span>
+          <ol>
+            <li><b>Discover</b> through ethnographic research: watching people where the work happens</li>
+            <li><b>Define</b> the real problem, the roles and every state they can end up in</li>
+            <li><b>Design</b> the flows first, then prototype and test the screens</li>
+            <li><b>Develop</b> alongside engineers, reviewing every build</li>
+            <li><b>Deliver</b> it, then check it works the way people actually use it</li>
+          </ol>
+        </div>
+      </div>
+      <div class="about-grid">
+        <div class="trait reveal"><h4>End to end</h4><p>I take work from requirements and user flows through to prototypes, final UI and implementation support.</p></div>
+        <div class="trait lime reveal d1"><h4>Systems thinker</h4><p>Role-based platforms, long workflows, dashboards, and the reusable patterns that hold them together.</p></div>
+        <div class="trait reveal d1"><h4>Collaborative</h4><p>I work closely with stakeholders, product managers and engineers, and I'd rather ask early than guess.</p></div>
+        <div class="trait reveal d2"><h4>Always curious</h4><p>Currently exploring how AI tools can speed up the boring parts of design work, so there's more time for the hard parts.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="reveal"><div class="kicker">03 / Experience &amp; capabilities</div><h2 class="h2">The craft behind the outcomes.</h2></div>
+      <p class="reveal d1">A blend of product thinking, interaction design, delivery coordination and practical collaboration.</p>
+    </div>
+    <div class="exp reveal">
+      <div class="exp-co">
+        <span class="logo">II</span>
+        <h3>Inspire Infosol Pvt. Ltd.</h3>
+        <span class="role">UI/UX Designer · Hyderabad</span>
+        <span class="when"><i class="live" style="background:#2d4a12"></i>Jun 2021 — Present</span>
+      </div>
+      <div class="exp-hl">
+        <div class="hl-item"><span class="n">01</span><h4>Product design ownership</h4><p>Leading design for enterprise and customer-facing web and mobile products, from first brief to live release.</p></div>
+        <div class="hl-item"><span class="n">02</span><h4>From ambiguity to interface</h4><p>Requirements → IA → flows → wireframes → prototypes → production-ready UI.</p></div>
+        <div class="hl-item"><span class="n">03</span><h4>Delivery partnership</h4><p>Design reviews, developer handoff, feedback loops and UI validation with engineering.</p></div>
+      </div>
+    </div>
+    <div class="caps">
+      <div class="cap-card reveal"><h4>Product design <span>01</span></h4><ul><li>Ethnographic &amp; contextual research</li><li>Double Diamond · 5D process</li><li>Interaction &amp; UX/UI design</li><li>Information architecture</li><li>User flows &amp; prototyping</li></ul></div>
+      <div class="cap-card reveal d1"><h4>Enterprise experience <span>02</span></h4><ul><li>Role-based platforms</li><li>Complex, multi-step workflows</li><li>Dashboards &amp; data-rich UI</li><li>Design systems &amp; WCAG</li></ul></div>
+      <div class="cap-card reveal d2"><h4>Project leadership <span>03</span></h4><ul><li>Requirements alignment</li><li>Stakeholder communication</li><li>Cross-functional coordination</li><li>Design reviews &amp; handoff</li></ul></div>
+      <div class="cap-card dark reveal d3"><h4>Tools <span style="color:#9ea993">04</span></h4><ul><li>Figma · Adobe XD</li><li>Storybook</li><li>React (basics)</li><li>AI-assisted design</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div class="contact-card reveal">
+        <div>
+          <div class="kicker" style="color:#3b4a26">04 / Contact</div>
+          <h2>Have a product challenge in mind?</h2>
+          <p>Let's talk about making it clearer, simpler and more useful — whether it's a full-time role, a contract project or just a design conversation.</p>
+        </div>
+        <div class="details">
+          <div class="detail"><div><small>Email</small><a href="mailto:sreejaporan@gmail.com">sreejaporan@gmail.com</a></div><button class="copy" data-copy="sreejaporan@gmail.com">Copy</button></div>
+          <div class="detail"><div><small>Phone</small><a href="tel:+918096697603">+91 80966 97603</a></div><button class="copy" data-copy="+91 80966 97603">Copy</button></div>
+          <div class="detail"><div><small>Location</small><span class="v">Hyderabad, India</span></div><span style="font-size:12px;font-weight:700;color:#56633f">IST · UTC+5:30</span></div>
+        </div>
+      </div>
+      <div class="form-card reveal d1" id="formCard">
+        <form id="form" novalidate>
+          <h3>Send a message</h3>
+          <p class="sub">This goes straight to my inbox. I usually reply within a couple of working days.</p>
+          <div class="f-grid">
+            <div class="f" data-field="name">
+              <label for="fName">Name</label>
+              <input id="fName" name="name" autocomplete="name" placeholder="Your name" aria-describedby="eName">
+              <div class="msg" id="eName" aria-live="polite"></div>
+            </div>
+            <div class="f" data-field="email">
+              <label for="fEmail">Email</label>
+              <input id="fEmail" name="email" type="email" autocomplete="email" placeholder="you@company.com" aria-describedby="eEmail">
+              <div class="msg" id="eEmail" aria-live="polite"></div>
+            </div>
+            <div class="f full" data-field="type">
+              <label for="fType">Project / role inquiry</label>
+              <select id="fType" name="type" aria-describedby="eType">
+                <option value="">Choose one…</option>
+                <option>Full-time role</option>
+                <option>Contract / freelance project</option>
+                <option>Design consultation or audit</option>
+                <option>Collaboration or speaking</option>
+                <option>Just saying hello</option>
+              </select>
+              <div class="msg" id="eType" aria-live="polite"></div>
+            </div>
+            <div class="f full" data-field="message">
+              <label for="fMsg">Message <i>— a few lines about the product or role</i></label>
+              <textarea id="fMsg" name="message" maxlength="1200" placeholder="What are you building, and where could design help?" aria-describedby="eMsg"></textarea>
+              <div class="msg"><span id="eMsg" aria-live="polite"></span><span class="count" id="count">0 / 1200</span></div>
+            </div>
+          </div>
+          <div class="form-foot">
+            <small>Your details are only used to reply to you.</small>
+            <button class="btn btn-dark magnetic" type="submit" id="sendBtn">Send message <span class="arr">↗</span></button>
+          </div>
+          
+        </form>
+        <div class="done" aria-live="polite">
+          <span class="tick"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#171916" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <h3 id="doneTitle">Message sent.</h3>
+          
+          <div class="acts">
+            <button class="btn btn-ghost" id="reset" type="button">Write another</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="yr"></span> Srija Porandla</span>
+    <span>Designed in Hyderabad, one flow at a time.</span>
+    <a href="#top">Back to top <span>↑</span></a>
+  </div>
+</footer>
+
+<!-- CASE DRAWER -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="caseTitle" aria-hidden="true">
+  <div class="d-bar">
+    <span class="idx" id="caseIdx">Case study</span>
+    <div class="acts">
+      <button class="icon-btn" id="prevCase" aria-label="Previous project">←</button>
+      <button class="icon-btn" id="nextCase" aria-label="Next project">→</button>
+      <button class="icon-btn" id="closeCase" aria-label="Close case study">✕</button>
+    </div>
+  </div>
+  <div class="d-progress"><i id="dProg"></i></div>
+  <div class="d-scroll" id="dScroll"><div class="d-inner" id="caseBody"></div></div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* =========================================================
+   Helpers
+   ========================================================= */
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+function qr(seed = 7, color = '#171916') {
+  const n = 21; let s = seed * 9301 + 49297; const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+  let r = '';
+  const finder = (x, y) => `<rect x="${x}" y="${y}" width="7" height="7" fill="${color}"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="${color}"/>`;
+  const inF = (x, y) => (x < 8 && y < 8) || (x > 12 && y < 8) || (x < 8 && y > 12);
+  for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) if (!inF(x, y) && rnd() > .52) r += `<rect x="${x}" y="${y}" width="1" height="1"/>`;
+  return `<svg viewBox="0 0 ${n} ${n}" shape-rendering="crispEdges"><g fill="${color}">${r}</g>${finder(0,0)}${finder(14,0)}${finder(0,14)}</svg>`;
+}
+const B = (t, tone = 'mute') => `<span class="b ${tone}">${t}</span>`;
+const bars = (arr, on = []) => `<div class="bars">${arr.map((h, i) => `<span class="${on.includes(i) ? 'on' : ''}" style="height:${h}%"></span>`).join('')}</div>`;
+const side = (active = 1, n = 5) => `<aside class="side"><i class="logo"></i>${Array.from({length:n},(_, i) => `<i class="${i === active ? 'on' : ''}"></i>`).join('')}</aside>`;
+function spark(pts, color = '#8fc23a', fill = true) {
+  const w = 200, h = 60, max = Math.max(...pts), min = Math.min(...pts);
+  const P = pts.map((v, i) => [i * w / (pts.length - 1), h - 6 - (v - min) / (max - min || 1) * (h - 14)]);
+  const d = P.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+  return `<svg class="line-chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">${fill ? `<path d="${d} L${w} ${h} L0 ${h}Z" fill="${color}" opacity=".16"/>` : ''}<path d="${d}" fill="none" stroke="${color}" stroke-width="2.4" vector-effect="non-scaling-stroke" stroke-linecap="round"/></svg>`;
+}
+function ring(pct, color = '#8fc23a', label = '', sub = '') {
+  const r = 40, c = 2 * Math.PI * r;
+  return `<svg class="gauge" viewBox="0 0 100 100"><circle cx="50" cy="50" r="${r}" fill="none" stroke="#eef0ea" stroke-width="10"/><circle cx="50" cy="50" r="${r}" fill="none" stroke="${color}" stroke-width="10" stroke-linecap="round" stroke-dasharray="${c * pct / 100} ${c}" transform="rotate(-90 50 50)"/><text x="50" y="${sub ? 50 : 55}" text-anchor="middle" font-family="Manrope" font-weight="800" font-size="19" fill="#171916">${label}</text>${sub ? `<text x="50" y="64" text-anchor="middle" font-family="DM Sans" font-size="8.5" fill="#666b62">${sub}</text>` : ''}</svg>`;
+}
+
+const leaf = (c = '#1f4a3a') => `<svg viewBox="0 0 24 24" width="1.5em" height="1.5em" fill="none" stroke="${c}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-7 10-10"/></svg>`;
+/* Aerial-map backdrop: city blocks around a forest with glowing trails */
+function mapBg() {
+  let blocks = '';
+  let s = 17; const r = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+  for (let y = 0; y < 270; y += 13) for (let x = 0; x < 420; x += 15) {
+    const dx = (x - 240) / 150, dy = (y - 150) / 105; if (dx * dx + dy * dy < 1.05) continue;
+    blocks += `<rect x="${x + r() * 3}" y="${y + r() * 3}" width="${8 + r() * 5}" height="${6 + r() * 5}" rx="1" fill="${r() > .5 ? '#3a463a' : '#2f3b30'}"/>`;
+  }
+  return `<svg class="map" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="400" height="260" fill="#263226"/>${blocks}
+    <path d="M110 120 C120 60 210 40 290 52 C370 64 400 120 385 180 C370 240 300 268 220 262 C140 256 100 190 110 120Z" fill="#1d3220"/>
+    <path d="M140 140 C150 90 220 70 280 82 C340 95 360 150 340 195 C318 240 250 248 200 236 C150 222 132 180 140 140Z" fill="#183019" opacity=".9"/>
+    <g fill="none" stroke="#7fe06b" stroke-width="1.3" stroke-linecap="round" opacity=".9">
+      <path d="M160 100 C200 120 250 110 300 130 C330 142 352 170 350 200"/>
+      <path d="M150 170 C190 150 230 165 262 190" opacity=".6"/>
+    </g>
+    <g fill="none" stroke="#d8d4b6" stroke-width=".6" stroke-dasharray="1.5 2" opacity=".5">
+      <path d="M200 70 C230 110 220 150 250 190 C270 215 300 220 320 240"/><path d="M130 150 C170 140 200 120 240 100"/>
+    </g>
+    <defs><linearGradient id="mapfade" x1="0" x2="1"><stop offset="0" stop-color="#0d160d" stop-opacity=".78"/><stop offset=".55" stop-color="#0d160d" stop-opacity=".35"/><stop offset="1" stop-color="#0d160d" stop-opacity=".1"/></linearGradient></defs>
+    <rect width="400" height="260" fill="url(#mapfade)"/></svg>`;
+}
+/* Painted forest-trail scene for the staff login panel */
+function forestScene() {
+  return `<svg class="scene" viewBox="0 0 300 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="fsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7d9a4a"/><stop offset=".45" stop-color="#4b6b2f"/><stop offset="1" stop-color="#1d3218"/></linearGradient>
+      <radialGradient id="flight" cx=".55" cy=".38" r=".35"><stop offset="0" stop-color="#e8efc0" stop-opacity=".75"/><stop offset="1" stop-color="#e8efc0" stop-opacity="0"/></radialGradient>
+      <linearGradient id="fpath" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfc7a0"/><stop offset="1" stop-color="#8c7f5c"/></linearGradient>
+      <linearGradient id="fshade" x1="0" y1="0" x2="0" y2="1"><stop offset=".35" stop-color="#0f2010" stop-opacity="0"/><stop offset="1" stop-color="#0f2010" stop-opacity=".85"/></linearGradient>
+    </defs>
+    <rect width="300" height="360" fill="url(#fsky)"/>
+    <rect width="300" height="360" fill="url(#flight)"/>
+    <path d="M150 150 C158 150 162 152 166 160 C185 220 230 300 260 360 L60 360 C95 300 130 220 142 160 C144 152 146 150 150 150Z" fill="url(#fpath)" opacity=".85"/>
+    <g fill="#2f4a22"><ellipse cx="40" cy="120" rx="80" ry="110"/><ellipse cx="270" cy="110" rx="70" ry="120"/></g>
+    <g fill="#3d5f2a" opacity=".9"><ellipse cx="20" cy="230" rx="70" ry="90"/><ellipse cx="290" cy="240" rx="60" ry="95"/><ellipse cx="80" cy="60" rx="60" ry="50"/><ellipse cx="230" cy="40" rx="70" ry="45"/></g>
+    <g fill="#5d8236" opacity=".55"><circle cx="60" cy="180" r="18"/><circle cx="250" cy="190" r="14"/><circle cx="110" cy="100" r="12"/><circle cx="200" cy="96" r="10"/></g>
+    <rect width="300" height="360" fill="url(#fshade)"/></svg>`;
+}
+
+/* =========================================================
+   Mock screens (illustrative, anonymised data)
+   ========================================================= */
+const screens = {
+  /* --- Park permits (palette & type taken from the park's own brand) --- */
+  permitHero: () => `<div class="mock park-site">
+    ${mapBg()}
+    <div class="pk-banner"><span><b>Existing annual permit holders:</b> please check and update your profile details.</span><span class="pk-btn" style="padding:.4em 1em">Update your profile</span></div>
+    <div class="pk-nav"><span class="pk-logo">${leaf('#1f4a3a')}<span>CITY<b>NATIONAL PARK</b></span></span>
+      <span class="pk-links"><span class="on">Home</span><span>About</span><span>Trails</span><span>Biodiversity</span><span>Visit</span><span>Donate</span></span><span class="pk-av">S</span></div>
+    <div class="pk-hero"><small>✕ THE CITY'S GREEN ESCAPE</small><h6><span class="grad">Step away.</span><br>Breathe deeper.</h6><p>One unforgettable experience.</p><div><span class="pk-btn">Discover more →</span><span class="pk-btn dk">Buy permit</span></div></div>
+    <div class="phone" style="top:34%;width:21%"><div class="ttl" style="color:#173b2c">My passes</div><div class="seg"><span class="on">Annual</span><span>Monthly</span><span>Daily</span></div>
+      <div class="pass"><small>ANNUAL PERMIT · 2026</small><b>Srija P.</b><div class="qr">${qr(3, '#184d3b')}</div><small>Valid Jan 1 – Dec 31</small></div>
+      <div class="pass" style="background:#007a73;padding:.6em .9em"><small>MONTHLY · NOV</small></div>
+    </div></div>`,
+  permitLogin: () => `<div class="mock" style="background:#f6f5ee">
+    <div class="pk-photo">${forestScene()}
+      <div style="display:flex;gap:.7em;align-items:center"><span class="pk-tile">${leaf('#fff')}</span><span class="serif" style="font-size:1.05em;line-height:1.15;white-space:nowrap">City<br><span style="letter-spacing:.14em;font-family:var(--body);font-size:.68em;font-weight:600">NATIONAL PARK</span></span></div>
+      <div><small style="letter-spacing:.24em;font-size:.68em;opacity:.85">● NATURE. NURTURE. TOGETHER.</small>
+        <div class="serif" style="font-size:2.05em;line-height:1.05;margin:.3em 0 .4em;letter-spacing:-.01em">A little care.<br><i style="color:#d9e8c4">A lasting legacy.</i></div>
+        <small style="opacity:.85;font-size:.85em;line-height:1.5;display:block">Behind every thriving park is a team that cares.</small></div>
+    </div>
+    <div class="pk-form">
+      <small style="letter-spacing:.18em;font-size:.7em;font-weight:700;color:#3d6b4f">● STAFF &amp; ADMIN PORTAL</small>
+      <b style="font-family:var(--display);font-size:1.9em;letter-spacing:-.04em;line-height:1;margin-top:.3em">Welcome back.</b>
+      <small style="color:#6b7466;font-size:.9em">Sign in to your workspace and keep the park moving forward.</small>
+      <label>Email address</label><div class="field"><span style="color:#9aa394">✉ you@park.gov.in</span></div>
+      <label style="display:flex;justify-content:space-between">Password <span style="color:#4d7a5c;font-weight:500">Forgot password?</span></label><div class="field"><span style="color:#9aa394">🔒︎ Enter your password</span><span style="color:#9aa394">◉</span></div>
+      <div class="pk-signin">Sign in →</div>
+      <small style="text-align:center;color:#7d8578;font-size:.75em">For authorised park personnel only</small>
+    </div></div>`,
+  permitAdmin: () => `<div class="mock bg-park park">
+    <div class="app full">${side(1)}<div class="main">
+      <div class="topbar"><div><b>Park operations</b><small>Admin portal · Morning session</small></div>${B('Live', 'ok')}</div>
+      <div class="kpis"><div class="kpi hot"><small>Currently in park</small><b>142</b><em>● Morning session</em></div><div class="kpi"><small>Permits today</small><b>386</b><em style="color:#007a73">Web 241 · Counter 145</em></div><div class="kpi"><small>Annual requests</small><b>14</b><em style="color:#9a6408">Pending review</em></div></div>
+      <div class="two"><div class="panel"><div class="ph">Annual requests <span>View all →</span></div>
+        <div class="row"><span class="av">AR</span><span class="grow">A. Rao <small>Citizen</small></span>${B('Pending', 'warn')}</div>
+        <div class="row"><span class="av">MK</span><span class="grow">M. Khan <small>Senior 60+</small></span>${B('Accepted', 'ok')}</div>
+        <div class="row"><span class="av">SV</span><span class="grow">S. Varma <small>Citizen</small></span>${B('Pay pending', 'info')}</div>
+        <div class="row"><span class="av">PL</span><span class="grow">P. Latha <small>Citizen</small></span>${B('Hold', 'mute')}</div></div>
+        <div class="panel"><div class="ph">Entries vs exits <span>Today</span></div>${bars([35,55,80,95,70,40,30,50,72],[3])}</div></div>
+    </div></div></div>`,
+  permitBuy: () => `<div class="mock bg-park park">
+    <div class="app full">${side(0, 3)}<div class="main">
+      <div class="topbar"><div><b>Choose your permit</b><small>Public website · Step 1 of 4</small></div><span class="minibtn g">Member login</span></div>
+      <div class="kpis"><div class="kpi lm"><small>Daily</small><b>Guest OK</b><em style="color:#173b2c">Single entry · QR per visitor</em></div><div class="kpi"><small>Monthly</small><b>Member</b><em style="color:#007a73">Calendar month</em></div><div class="kpi hot"><small>Annual</small><b>Apply</b><em>Admin review first</em></div></div>
+      <div class="panel"><div class="ph">Daily permit · visitors <span>Guest checkout</span></div>
+        <div class="row"><span class="grow">Adults</span><span class="minibtn g">−</span><b>2</b><span class="minibtn g">+</span></div>
+        <div class="row"><span class="grow">Children</span><span class="minibtn g">−</span><b>1</b><span class="minibtn g">+</span></div>
+        <div class="row"><span class="grow">Mobile for SMS tickets</span><span class="field okf" style="flex:1">98•• •• ••21 <span>✓</span></span></div>
+        <div class="row" style="justify-content:space-between"><span><small style="color:var(--muted)">3 QR tickets will be issued</small></span><span class="minibtn">Continue to pay →</span></div></div>
+    </div></div></div>`,
+  permitWallet: () => `<div class="mock bg-parkdk">
+    <div class="phone" style="left:8%;right:auto;top:10%;width:30%"><div class="ttl" style="color:#173b2c">My passes</div><div class="seg"><span>Annual</span><span>Monthly</span><span class="on">Daily</span></div>
+      <div class="pass" style="background:#bfff58;color:#173b2c"><small>DAILY · VISITOR 1 OF 3</small><b>Adult</b><div class="qr">${qr(11, '#173b2c')}</div><small>Single entry · Today</small></div>
+      <div style="text-align:center;font-size:.75em;color:var(--muted)">• • ○ swipe for next visitor</div></div>
+    <div class="phone" style="left:42%;right:auto;top:18%;width:30%"><div class="ttl" style="color:#173b2c">My passes</div><div class="seg"><span>Annual</span><span class="on">Monthly</span><span>Daily</span></div>
+      <div class="pass" style="background:#007a73"><small>MONTHLY · NOVEMBER</small><b>Srija P.</b><div class="qr">${qr(21, '#0a4f4a')}</div><small>Nov 1 – Nov 30</small></div>
+      <div class="minibtn g" style="font-size:.7em">View all permits</div></div>
+    <div class="float" style="right:4%;top:14%;width:22%;font-size:.95em"><b style="font-family:Manrope;color:#173b2c">Colour by type</b><div style="display:flex;flex-direction:column;gap:.45em;margin-top:.6em;font-size:.85em">
+      <span><i style="display:inline-block;width:.8em;height:.8em;border-radius:.2em;background:#184d3b;vertical-align:-.1em"></i> Annual</span>
+      <span><i style="display:inline-block;width:.8em;height:.8em;border-radius:.2em;background:#007a73;vertical-align:-.1em"></i> Monthly</span>
+      <span><i style="display:inline-block;width:.8em;height:.8em;border-radius:.2em;background:#bfff58;vertical-align:-.1em"></i> Daily</span></div></div>
+    </div>`,
+  permitSelf: () => `<div class="mock bg-park">
+    <div class="float" style="left:4%;top:12%;width:29%;bottom:12%;display:flex;flex-direction:column;gap:.6em">
+      <small style="font-weight:700;color:#3d6b4f;font-size:.75em;letter-spacing:.1em">1 · SITE BANNER</small>
+      <div style="background:#184d3b;color:#fff;border-radius:.6em;padding:.7em;font-size:.82em;line-height:1.35"><b>Annual permit holders:</b> please check your profile details.<div class="pk-btn" style="margin-top:.6em;font-size:.9em">Update your profile</div></div>
+      <small style="color:var(--muted);font-size:.78em">Shown on every page until the holder confirms.</small></div>
+    <div class="float" style="left:35.5%;top:12%;width:29%;bottom:12%;display:flex;flex-direction:column;gap:.6em">
+      <small style="font-weight:700;color:#3d6b4f;font-size:.75em;letter-spacing:.1em">2 · VERIFY</small>
+      <b style="font-family:Manrope;color:#173b2c">Enter the code sent to ••••21</b>
+      <div class="otp"><span>4</span><span>8</span><span>1</span><span class="f">2</span><span></span><span></span></div>
+      <small style="color:var(--muted);font-size:.78em">Resend in 01:42</small>
+      <div class="pk-signin" style="margin-top:auto;font-size:.85em">Verify</div></div>
+    <div class="float" style="left:67%;top:12%;width:29%;bottom:12%;display:flex;flex-direction:column;gap:.5em">
+      <small style="font-weight:700;color:#3d6b4f;font-size:.75em;letter-spacing:.1em">3 · REVIEW &amp; EDIT ONCE</small>
+      <div class="field" style="background:#f2f3ee;color:#7d8578"><span>Permit · Annual 2026</span><span>🔒︎</span></div>
+      <div class="field okf"><span>Email</span><b>s.p@mail.com</b></div>
+      <div class="field"><span>Phone</span><b>98•• ••21</b></div>
+      <small style="color:#9a6408;font-size:.75em;font-weight:700">1 online edit remaining</small>
+      <div class="pk-signin" style="margin-top:auto;font-size:.85em">Save details</div></div>
+  </div>`,
+  permitCounter: () => `<div class="mock bg-park park">
+    <div class="app full">${side(2)}<div class="main">
+      <div class="topbar"><div><b>Counter ticketing</b><small>Staff portal · Evening session</small></div>${B('Annual: view only', 'mute')}</div>
+      <div class="two"><div class="panel"><div class="ph">New walk-in</div>
+        <div class="row"><span class="grow">Adults</span><b>3</b></div><div class="row"><span class="grow">Children</span><b>2</b></div>
+        <div class="row"><span class="grow">Payment</span><div class="seg" style="flex:1"><span>UPI QR</span><span class="on">Cash</span></div></div>
+        <div class="row"><span class="grow">Receipt no.</span><span class="field okf">RC-0418</span></div></div>
+        <div class="panel" style="display:flex;flex-direction:column;gap:.6em"><div class="ph">Summary</div><small style="color:var(--muted)">Amount auto-calculated from current pricing</small><b style="font-family:Manrope;font-size:2em;letter-spacing:-.04em;color:#173b2c">5 tickets</b><span class="minibtn l">Print QR tickets</span><small style="color:var(--muted)">Counts toward live occupancy</small></div></div>
+    </div></div></div>`,
+  permitConfig: () => `<div class="mock bg-park park">
+    <div class="app full">${side(4)}<div class="main">
+      <div class="topbar"><div><b>Configuration</b><small>Changes are effective-dated</small></div><span class="minibtn">Schedule change</span></div>
+      <div class="two"><div class="panel"><div class="ph">Park sessions <span>Winter</span></div>
+        <div class="row"><span class="grow">Morning</span><span class="field">5:30 – 9:30 AM</span></div>
+        <div class="row"><span class="grow">Evening</span><span class="field">4:00 – 6:00 PM</span></div>
+        <div class="row"><span class="grow">Effective from</span><span class="field okf">01 Dec 2026</span></div></div>
+        <div class="panel"><div class="ph">Holiday calendar <span>Dec</span></div>
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:.3em;font-size:.8em;text-align:center">${Array.from({length:28},(_,i)=>`<span style="padding:.35em 0;border-radius:.4em;${i===11||i===24?'background:#fbe3dc;color:#b2401f;font-weight:700':'background:#f1f3ec'}">${i+1}</span>`).join('')}</div>
+        <small style="color:var(--muted);display:block;margin-top:.5em">Online sales pause on holidays</small></div></div>
+    </div></div></div>`,
+
+  /* --- Group booking --- */
+  groupHero: () => `<div class="mock bg-sage">
+    <div class="app">${side(2)}<div class="main">
+      <div class="topbar"><div><b>Pending requests</b><small>Revenue manager · Sector queue</small></div><span class="minibtn">+ Filter</span></div>
+      <div class="kpis k4"><div class="kpi"><small>Open negotiations</small><b>38</b></div><div class="kpi"><small>Expiring &lt; 6h</small><b style="color:#b2401f">7</b></div><div class="kpi lm"><small>Success rate</small><b>64%</b></div><div class="kpi"><small>Median turnaround</small><b>5.2h</b></div></div>
+      <div class="panel"><div class="ph">Group · Series · Charter <span>Sorted by expiry</span></div>
+        <div class="row"><span class="av">GR</span><span class="grow">GRP-2291 <small>42 pax · Round 2 of 3</small></span>${B('Expires 2h 14m','bad')}</div>
+        <div class="row"><span class="av">SR</span><span class="grow">SER-0177 <small>6 rotations · Alt ID</small></span>${B('Countered','info')}</div>
+        <div class="row"><span class="av">CH</span><span class="grow">CHR-0042 <small>Split-PNR · 3 groups</small></span>${B('Admin review','warn')}</div>
+        <div class="row"><span class="av">GR</span><span class="grow">GRP-2288 <small>18 pax · Accepted</small></span>${B('On hold · 1st paid','ok')}</div></div>
+    </div></div>
+    <div class="float" style="right:4%;top:20%;width:30%"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-family:Manrope;font-size:1.15em">Counteroffer</b>${B('Round 2 / 3','dk')}</div>
+      <div style="display:flex;flex-direction:column;gap:.5em;margin-top:.8em;font-size:.9em"><div class="field"><span>Customer offer</span><b>240</b></div><div class="field okf"><span>Your counter</span><b>251</b></div><small style="color:#3f7a0f">✓ Above customer offer · 2.3% off fare</small><span class="minibtn" style="margin-top:.3em">Send counter</span></div></div>
+  </div>`,
+  groupNegotiate: () => `<div class="mock bg-lime">
+    <div class="float" style="left:8%;right:8%;top:10%;bottom:10%;display:flex;flex-direction:column;gap:.8em;font-size:1.05em">
+      <div style="display:flex;justify-content:space-between;align-items:center"><b style="font-family:Manrope;font-size:1.3em;letter-spacing:-.03em">Negotiate group fare</b>${B('Expires 21 Nov · 18:00','bad')}</div>
+      <div style="display:flex;gap:.4em">${[1,2,3].map(i=>`<span style="flex:1;height:.45em;border-radius:1em;background:${i<3?'#171916':'#e3e5dc'}"></span>`).join('')}</div><small style="color:var(--muted)">Round 2 of 3 used — one counter left after this</small>
+      <div class="two"><div class="field"><span>Fare / pax</span><b>257</b></div><div class="field okf"><span>Your offer</span><b>240</b></div></div>
+      <div class="panel" style="background:#fafbf6"><div class="row"><span class="grow">40 pax × 240</span><b>9,600</b></div><div class="row"><span class="grow">Taxes &amp; fees</span><b>1,120</b></div><div class="row"><span class="grow"><b>Total incl. tax</b></span><b>10,720</b></div></div>
+      <div style="display:flex;gap:.5em;margin-top:auto"><span class="minibtn g" style="flex:1">Accept 257 · pay in 10 min</span><span class="minibtn" style="flex:1">Submit offer</span></div>
+    </div></div>`,
+  groupManifest: () => `<div class="mock bg-sand">
+    <div class="app full">${side(3)}<div class="main">
+      <div class="topbar"><div><b>Passenger manifest</b><small>Unlocked after 1st payment · Booking on hold</small></div>${B('3 rows need attention','warn')}</div>
+      <div class="panel"><div class="ph">manifest_GRP-2291.xlsx <span>40 rows parsed</span></div>
+        <div class="row"><span class="av">12</span><span class="grow">Mr · R. Iyer</span><span class="field err">31/02/1990</span>${B('Invalid DOB','bad')}</div>
+        <div class="row"><span class="av">18</span><span class="grow">— · K. Das</span><span class="field err">Title?</span>${B('Missing title','bad')}</div>
+        <div class="row"><span class="av">27</span><span class="grow">Ms · A. Nair</span><span class="field err">+91 ·· ··</span>${B('Missing mobile','bad')}</div>
+        <div class="row"><span class="av">✓</span><span class="grow">37 other rows</span>${B('Valid','ok')}</div></div>
+      <div style="display:flex;gap:.5em;justify-content:flex-end"><span class="minibtn g">Fix inline</span><span class="minibtn l">Commit to booking</span></div>
+    </div></div></div>`,
+  groupSeries: () => `<div class="mock bg-mist">
+    <div class="app full">${side(1)}<div class="main">
+      <div class="topbar"><div><b>Series SER-0177</b><small>Alternate ID · 6 linked PNRs</small></div></div>
+      <div class="panel" style="background:#fff7f4;border-color:#f1c3b3"><div class="ph" style="color:#b2401f">⚠ Tranche 2 due in 3 days <span style="color:#b2401f">All 6 PNRs at risk</span></div><small style="color:#7a3a25">Missing this payment cancels every PNR in the series, including earlier rotations.</small></div>
+      <div class="panel"><div class="ph">Installments <span>Travel agent · 40 / 60</span></div>
+        <div class="row"><span class="grow">Tranche 1 · 40%</span>${B('Paid','ok')}</div>
+        <div class="row"><span class="grow">Tranche 2 · 60% <small>due 23 Nov</small></span>${B('Due in 3d','bad')}</div></div>
+      <div style="display:flex;justify-content:flex-end"><span class="minibtn">Pay tranche 2</span></div>
+    </div></div></div>`,
+  groupAdmin: () => `<div class="mock bg-sage">
+    <div class="app full">${side(4)}<div class="main">
+      <div class="topbar"><div><b>Admin · Configurations</b><small>Negotiation · Installments · Sectors · Reminders</small></div><span class="minibtn g" style="opacity:.5">Discard</span></div>
+      <div class="seg" style="width:80%"><span class="on">Negotiation</span><span>Installments</span><span>Sectors</span><span>Reminders</span></div>
+      <div class="kpis"><div class="kpi"><small>Max rounds</small><b>3</b></div><div class="kpi"><small>Expiry (hours)</small><b>24</b></div><div class="kpi"><small>Limit %</small><b>15</b></div></div>
+      <div class="panel"><div class="ph">Disable manager · step 1 of 3</div><div class="row"><span class="grow">Reassign 2 regional managers</span>${B('Required','warn')}</div><div class="row"><span class="grow">Transfer 9 open negotiations</span>${B('Next','mute')}</div></div>
+    </div></div></div>`,
+
+  /* --- Loyalty --- */
+  loyaltyHero: () => `<div class="mock bg-forest">
+    <div class="app">${side(1)}<div class="main">
+      <div class="topbar"><div><b>Plan builder</b><small>Member rewards 2026 · Draft</small></div><span class="minibtn l">Publish</span></div>
+      <div style="display:flex;gap:.4em;font-size:.85em;font-weight:700">${['Basics','Tiers','Earn & burn','Rewards','Eligibility','Review'].map((s,i)=>`<span style="padding:.35em .7em;border-radius:99px;${i===1?'background:#171916;color:#fff':i<1?'background:#e7f6d2;color:#3f7a0f':'background:#f0f2ea;color:#666b62'}">${i<1?'✓ ':''}${s}</span>`).join('')}</div>
+      <div class="kpis"><div class="kpi"><small>Silver</small><b>0+</b><em>1× points</em></div><div class="kpi lm"><small>Gold</small><b>5,000+</b><em style="color:#2d4a12">1.5× · 5% off</em></div><div class="kpi hot"><small>Platinum</small><b>15,000+</b><em>2× · lounge</em></div></div>
+      <div class="panel"><div class="ph">Eligibility rule</div>
+        <div class="row"><span class="b mute">IF</span><span class="field">Tier = Gold</span><span class="b mute">AND</span><span class="field">Spend ≥ 2,000</span></div>
+        <div class="row"><span class="b dk">THEN</span><span class="field okf" style="flex:1">Apply 5% discount on renewals</span></div></div>
+    </div></div>
+    <div class="float" style="right:4%;top:24%;width:26%;font-size:.95em"><b style="font-family:Manrope">Validation</b><div style="display:flex;flex-direction:column;gap:.45em;margin-top:.6em;font-size:.88em"><span style="color:#3f7a0f">✓ Tier thresholds ascend</span><span style="color:#3f7a0f">✓ No overlapping rules</span><span style="color:#9a6408">! Reward ‘Lounge pass’ has no stock limit</span></div></div>
+  </div>`,
+  loyaltyTiers: () => `<div class="mock bg-lime">
+    <div class="app full">${side(1)}<div class="main">
+      <div class="topbar"><div><b>Membership tiers</b><small>Drag to reorder · thresholds validated live</small></div><span class="minibtn">+ Add tier</span></div>
+      <div class="panel"><div class="row"><span class="av" style="background:#eef0ea">≡</span><span class="grow"><b>Silver</b> <small>entry tier</small></span><span class="field">0 pts</span></div>
+        <div class="row"><span class="av" style="background:#c9f36b">≡</span><span class="grow"><b>Gold</b></span><span class="field">5,000 pts</span></div>
+        <div class="row"><span class="av" style="background:#171916;color:#c9f36b">≡</span><span class="grow"><b>Platinum</b></span><span class="field err">4,000 pts</span></div></div>
+      <div class="panel" style="background:#fff7f4;border-color:#f1c3b3;color:#7a3a25">Platinum threshold must be higher than Gold (5,000). <b>Fix</b></div>
+    </div></div></div>`,
+  loyaltyRules: () => `<div class="mock bg-sand">
+    <div class="app full">${side(2)}<div class="main">
+      <div class="topbar"><div><b>Pricing &amp; discounts</b><small>Reusable rule pattern</small></div>${B('Scheduled · 1 Jan','info')}</div>
+      <div class="panel"><div class="ph">Rules <span>4 active</span></div>
+        <div class="row"><span class="grow">Gold renewal discount <small>5%</small></span>${B('Active','ok')}</div>
+        <div class="row"><span class="grow">Birthday bonus points <small>500</small></span>${B('Active','ok')}</div>
+        <div class="row"><span class="grow">Festive double points <small>2×</small></span>${B('Scheduled','info')}</div>
+        <div class="row"><span class="grow">Partner cashback <small>3%</small></span>${B('Draft','mute')}</div></div>
+      <div class="panel"><div class="ph">Preview impact</div>${bars([30,42,38,55,61,58,72,80],[6,7])}</div>
+    </div></div></div>`,
+
+  /* --- Flight ops --- */
+  flightHero: () => `<div class="mock bg-mist">
+    <div class="app">${side(1)}<div class="main">
+      <div class="topbar"><div><b>Operations board</b><small>Today · exceptions first</small></div>${B('Live · 09:42','ok')}</div>
+      <div class="kpis k4"><div class="kpi"><small>Flights</small><b>126</b></div><div class="kpi lm"><small>On time</small><b>84%</b></div><div class="kpi"><small>Delayed</small><b style="color:#b2401f">12</b></div><div class="kpi"><small>Pax affected</small><b>1,340</b></div></div>
+      <div class="panel"><div class="ph">Departures <span>STD · Gate · Status</span></div>
+        <div class="row"><b style="width:4.5em">XA 214</b><span class="grow">HYD → BLR <small>09:55 · B4</small></span>${B('Delayed 40m','bad')}</div>
+        <div class="row"><b style="width:4.5em">XA 506</b><span class="grow">HYD → DXB <small>10:20 · C1</small></span>${B('Boarding','info')}</div>
+        <div class="row"><b style="width:4.5em">XA 118</b><span class="grow">HYD → DEL <small>10:45 · A2</small></span>${B('On time','ok')}</div>
+        <div class="row"><b style="width:4.5em">XA 731</b><span class="grow">HYD → MAA <small>11:05 · B1</small></span>${B('Gate change','warn')}</div></div>
+    </div></div>
+    <div class="phone"><div class="ttl">My trip</div>
+      <div class="pass" style="background:#171916"><small>XA 214 · HYD → BLR</small><b style="color:#c9f36b">Delayed 40 min</b><small>New departure 10:35 · Gate B4</small></div>
+      <div class="panel" style="font-size:.85em"><b>Missing your connection?</b><small style="display:block;color:var(--muted);margin:.3em 0 .5em">2 rebooking options available</small><span class="minibtn l" style="width:100%">View options</span></div>
+    </div></div>`,
+  flightRecovery: () => `<div class="mock bg-sage">
+    <div class="app full">${side(2)}<div class="main">
+      <div class="topbar"><div><b>Delay recovery · XA 214</b><small>Step 3 of 4 · Choose action</small></div>${B('Code 93 · Late inbound','warn')}</div>
+      <div class="kpis"><div class="kpi"><small>Delay</small><b>40m</b></div><div class="kpi"><small>Connecting pax</small><b>23</b></div><div class="kpi hot"><small>At-risk connections</small><b>6</b></div></div>
+      <div class="panel"><div class="ph">Recovery options</div>
+        <div class="row"><span class="grow"><b>Retime</b> <small>keep aircraft, +40m</small></span>${B('6 misconnects','bad')}</div>
+        <div class="row" style="background:#f8fdf0;border-radius:.6em;padding-left:.5em"><span class="grow"><b>Swap aircraft</b> <small>VT-•KD available 10:05</small></span>${B('0 misconnects','ok')}</div>
+        <div class="row"><span class="grow"><b>Rebook at-risk pax</b></span>${B('6 seats on XA 220','info')}</div></div>
+      <div style="display:flex;justify-content:flex-end;gap:.5em"><span class="minibtn g">Back</span><span class="minibtn">Apply &amp; notify</span></div>
+    </div></div></div>`,
+  flightReport: () => `<div class="mock bg-lime">
+    <div class="app full">${side(4)}<div class="main">
+      <div class="topbar"><div><b>Reports</b><small>On-time performance · Last 30 days</small></div><span class="minibtn g">Export</span></div>
+      <div class="two"><div class="panel"><div class="ph">OTP trend <span>%</span></div>${spark([78,80,77,83,85,82,86,84,88,87,89],'#171916')}</div>
+        <div class="panel"><div class="ph">Delay reasons</div>
+          <div class="row"><span class="grow">Late inbound</span><b>38%</b></div><div class="row"><span class="grow">Ground handling</span><b>24%</b></div><div class="row"><span class="grow">Weather</span><b>17%</b></div></div></div>
+      <div class="panel"><div class="ph">Notifications sent <span>by channel</span></div>${bars([60,45,80,52,66,90,70],[5])}</div>
+    </div></div></div>`,
+
+  /* --- CNG --- */
+  cngHero: () => `<div class="mock bg-sand">
+    <div class="app">${side(1)}<div class="main">
+      <div class="topbar"><div><b>Fleet &amp; refills</b><small>Operations · Hyderabad cluster</small></div>${B('3 low-level alerts','bad')}</div>
+      <div class="two"><div class="panel"><div class="ph">Refill queue <span>Today</span></div>
+        <div class="row"><span class="av">TK</span><span class="grow">Site 14 · Tank B <small>18%</small></span>${B('Requested','warn')}</div>
+        <div class="row"><span class="av">TK</span><span class="grow">Site 09 · Tank A <small>22%</small></span>${B('Scheduled','info')}</div>
+        <div class="row"><span class="av">TR</span><span class="grow">Site 03 · Truck 7 <small>ETA 25m</small></span>${B('Dispatched','dk')}</div>
+        <div class="row"><span class="av">TK</span><span class="grow">Site 21 · Tank C</span>${B('Delivered','ok')}</div></div>
+        <div class="panel"><div class="ph">Flow meter · Site 14</div>${spark([42,48,46,58,62,55,70,74,69,80],'#007a73')}<small style="color:var(--muted)">m³/hr · last 10 readings</small></div></div>
+      <div class="kpis"><div class="kpi"><small>Active trucks</small><b>12</b></div><div class="kpi"><small>Open tickets</small><b>5</b></div><div class="kpi lm"><small>On-time refills</small><b>93%</b></div></div>
+    </div></div>
+    <div class="phone"><div class="ttl">Tank B</div><div style="width:80%;align-self:center">${ring(18,'#e0603e','18%','≈ 1.5 days left')}</div>
+      <span class="minibtn l">Request refill</span><div class="panel" style="font-size:.8em"><small style="color:var(--muted)">Last reading 09:30</small><b style="display:block">41.2 m³/hr</b></div></div>
+  </div>`,
+  cngMobile: () => `<div class="mock bg-mist">
+    <div class="phone" style="left:10%;right:auto;top:8%;width:30%"><div class="ttl">My tanks</div>
+      <div class="panel" style="display:flex;gap:.6em;align-items:center"><div style="width:42%">${ring(64,'#8fc23a','64%')}</div><div style="font-size:.8em"><b>Tank A</b><br><small style="color:var(--muted)">Healthy</small></div></div>
+      <div class="panel" style="display:flex;gap:.6em;align-items:center;border-color:#f1c3b3"><div style="width:42%">${ring(18,'#e0603e','18%')}</div><div style="font-size:.8em"><b>Tank B</b><br><small style="color:#b2401f">Refill soon</small></div></div>
+      <span class="minibtn l">Request refill</span></div>
+    <div class="phone" style="left:46%;right:auto;top:16%;width:30%"><div class="ttl">Refill #R-882</div>
+      ${['Requested','Scheduled','Dispatched','Delivered'].map((s,i)=>`<div style="display:flex;gap:.5em;align-items:center;font-size:.82em"><span style="width:1.1em;height:1.1em;border-radius:50%;flex:none;background:${i<3?'#171916':'#e3e5dc'};${i===2?'box-shadow:0 0 0 .3em #c9f36b':''}"></span><span style="${i===2?'font-weight:700':''}">${s}</span></div>`).join('')}
+      <div class="panel" style="font-size:.78em"><b>Truck 7 · ETA 25 min</b><br><small style="color:var(--muted)">Driver R. Kumar</small></div>
+      <span class="minibtn g" style="font-size:.72em">Raise a ticket</span></div>
+  </div>`,
+  cngHelp: () => `<div class="mock bg-sage">
+    <div class="app full">${side(3)}<div class="main">
+      <div class="topbar"><div><b>Helpdesk</b><small>Tickets linked to site &amp; asset</small></div><span class="minibtn">New ticket</span></div>
+      <div class="kpis"><div class="kpi"><small>Open</small><b>5</b></div><div class="kpi"><small>Breaching SLA</small><b style="color:#b2401f">1</b></div><div class="kpi lm"><small>Resolved this wk</small><b>27</b></div></div>
+      <div class="panel"><div class="row"><span class="grow">#T-311 Meter reading mismatch <small>Site 09</small></span>${B('SLA 2h left','bad')}</div>
+        <div class="row"><span class="grow">#T-309 Refill delayed <small>Site 14</small></span>${B('In progress','info')}</div>
+        <div class="row"><span class="grow">#T-305 Invoice query <small>Site 03</small></span>${B('Resolved','ok')}</div></div>
+    </div></div></div>`
+};
+
+/* =========================================================
+   Projects data (NDA-safe, anonymised)
+   ========================================================= */
+const projects = [
+{
+  id:'permit', num:'01', cats:['operations','mobile'],
+  title:'National Park — Digital Permit Management',
+  type:'Public service & operations platform',
+  short:'Turning an offline permit process into one connected ecosystem for visitors, members, front-desk staff and park administrators.',
+  tags:['Service design','Multi-role platform','Web & mobile','Live product'],
+  hero:'permitHero',
+  meta:{Role:'End-to-end product design · Coordination',Platform:'Responsive web, mobile, staff & admin portals',Users:'Visitors, members, front-desk staff, admins',Status:'Phase 2 delivered & live'},
+  nda:'Client name, live URLs, pricing and real screens are withheld under NDA. Visuals are recreated, anonymised representations of the shipped product.',
+  context:[
+    'A large urban national park ran its daily, monthly and annual permits on paper and manual approvals. Phase 1 — a public static website — was already live. Phase 2 had to digitise the whole permit lifecycle without removing the assisted counter service that many regular walkers relied on.',
+    'I worked across three connected experiences: a public journey for visitors and members, a staff portal for front-desk ticketing, and an admin portal for approvals, access control, configuration and reporting — all sharing one permit, payment and occupancy model.'
+  ],
+  objective:'Create one permit ecosystem where visitors buy online, staff issue assisted permits at the counter, and administrators control approvals, pricing, validity, access and reporting — with a clear, role-appropriate experience for each.',
+  pains:[
+    ['Offline, manual annual approvals','Applicants had no visibility into review status, hold reasons or how long they had to pay after approval.'],
+    ['No live occupancy','Nobody could see how many people were inside the park during a session, or compare entries against exits.'],
+    ['Three permit types, three rulebooks','Daily visitors needed guest checkout; monthly and annual members needed accounts, face registration and — for annual — admin review.'],
+    ['Counter and online out of sync','Walk-in tickets paid by cash or UPI had to land in the same counts, reports and audit trail as web purchases.'],
+    ['Blurry permission boundaries','Front-desk staff needed to see annual requests without being able to approve, reject or hold them.'],
+    ['Rules that change over time','Pricing, sessions and validity windows change seasonally — but history must keep the rules that applied at the time.']
+  ],
+  lanes:[
+    ['Visitor','Daily permit',['Choose Daily','Continue as guest','Adults & children','Names + mobile','Pay online',{t:'QR per visitor + SMS link',k:'end'},{t:'Gate scan → marked used',k:'sys'}]],
+    ['Member','Monthly permit',['Select Monthly','Log in / register','Face registration','Pay',{t:'Active for calendar month',k:'end'}]],
+    ['Member','Annual permit',['Citizen or Senior','Submit with reason',{t:'Pending',k:'sys'},{t:'Admin: accept / reject / hold',k:'dec'},'Face registration','Pay within 30 days',{t:'Active',k:'end'}]],
+    ['Front-desk staff','Counter ticketing',['Adults & children',{t:'Amount auto-calculated',k:'sys'},{t:'UPI QR or cash + receipt',k:'dec'},{t:'Print QR tickets',k:'end'},{t:'Shared occupancy & reports',k:'sys'}]],
+    ['Admin','Control & reporting',['Live occupancy','Annual review queue','Members & pass disable',{t:'Effective-dated config',k:'sys'},{t:'Date-filtered reports',k:'end'}]]
+  ],
+  states:[
+    ['Annual application',[['Pending','warn'],['Accepted','ok'],['Rejected','bad'],['Hold','mute'],['Payment pending','info'],['Issued','dk']]],
+    ['Permit',[['Pending payment','info'],['Active','ok'],['Disabled','bad'],['Expired','mute'],['Used (daily)','dk']]],
+    ['Payment',[['Initiated','mute'],['Pending','warn'],['Successful','ok'],['Failed','bad']]]
+  ],
+  solutions:[
+    {t:'One catalogue, three journeys',s:'permitBuy',p:'Daily, monthly and annual permits sit side by side with their rules up front, so people self-select the right path before they hit friction.',
+      b:['Guest checkout for daily permits — no account required','Face registration with informed consent before payment for monthly and annual','A separate QR for every visitor in a group, plus an SMS link to the tickets']},
+    {t:'My Pass Wallet',s:'permitWallet',p:'Not in the original requirements. A wallet in the header opens a drawer on desktop and a full-screen swipeable view on mobile, so the right QR is one tap away at the gate.',
+      b:['Annual, monthly and daily passes colour-coded by type','Daily bookings show one swipeable QR per visitor','Expired permits tucked behind “View all permits”; native phone wallets noted as future work']},
+    {t:'Self-service for annual holders',s:'permitSelf',p:'A notice saying holders can update their details “here” isn\'t enough on its own; people need a visible way in. A banner on every page leads straight into a short OTP flow.',
+      b:['Log in with email or mobile number and a one-time code','Personal details are reviewable; permit details stay locked','One online edit, with a clear confirmation afterwards']},
+    {t:'A calmer front door for staff',s:'permitLogin',p:'The staff and admin portal shares the park\'s visual language: forest greens, a serif voice for the park\'s own lines, and a plain, focused sign-in.',
+      b:['Role-based access decides what each person sees after sign-in','Clear “authorised personnel only” framing for a public-sector tool']},
+    {t:'Counter ticketing for staff',s:'permitCounter',p:'A fast, focused screen for the front desk: pick headcount, let the system price it, collect UPI or cash, print.',
+      b:['Cash payments capture an auditable receipt reference','Counter tickets feed the same occupancy, counts and reports as web sales','Annual requests visible to staff — but approve / reject / hold stays admin-only']},
+    {t:'Admin command centre',s:'permitAdmin',p:'Occupancy, sales, members and the annual review queue in one place, with drill-downs where questions usually start.',
+      b:['“Currently in park” card drills into morning and evening session counts by date','Accept / reject / hold logged with acting admin and timestamp','Passes can be disabled and re-enabled without changing their original expiry','Permit ID pop-up shows buyer, entry/exit and payment details']},
+    {t:'Configuration that respects history',s:'permitConfig',p:'Pricing, sessions, validity windows, eligibility and holidays are admin-configurable and effective-dated, so past transactions keep the rules that applied.',
+      b:['Holiday calendar pauses online sales and shows a closure banner the day before','Entry blocked outside configured sessions','Changes scheduled ahead rather than edited in place']}
+  ],
+  beyond:[
+    ['Wallet','My Pass Wallet','Desktop drawer and mobile swipeable view for every active QR.'],
+    ['Self-service','Annual holder portal','OTP login, review details, one online edit of contact info with permit data locked.'],
+    ['Giving','Donations & community','Guest and member donation flows plus tabbed recognition for individuals, CSR and sponsors.'],
+    ['Operations','Holiday calendar','Admin-marked closures that pause sales and warn visitors in advance.'],
+    ['Insight','Occupancy drill-down','Live count opens session-level breakdowns filtered by date.'],
+    ['Support','Permit ID pop-up','Everything staff need about one permit, without leaving the list.']
+  ],
+  outcomeHead:'Phase 2 delivered and live — rolled out across three releases.',
+  outcome:['Release A: catalogue, member auth, daily & monthly purchase, face enrolment, payment, SMS & QR, member dashboard','Release B: staff portal, counter ticketing, cash & UPI, printing, occupancy','Release C: annual workflow, admin dashboards, pass control, configuration, reports, donations, user management','Converted the requirements into end-to-end flows across web, mobile and admin, and designed six features beyond the brief','Surfaced open questions early — entry-capture method, face-data consent & retention, annual application window — so they were resolved before build'],
+  nums:[['4','User roles'],['3','Permit types'],['6','Beyond-brief features'],['3','Phased releases']]
+},
+{
+  id:'group', num:'02', cats:['enterprise'],
+  title:'Bulk Fare Negotiation & Booking Engine',
+  type:'Enterprise B2B booking platform',
+  short:'Unifying group, series and charter bookings — negotiation, installment holds and passenger manifests — on one revenue-protected engine.',
+  tags:['B2B / B2C','Negotiation workflows','Revenue management','Admin configuration'],
+  hero:'groupHero',
+  meta:{Role:'Product design · Business analysis · UX architecture',Platform:'Responsive web, bilingual (LTR / RTL)',Users:'Customers, travel agents, revenue managers, admins',Scope:'3 booking models · 9 notification events'},
+  nda:'The airline, product name, pricing, currency and third-party systems are anonymised under NDA. Figures shown are illustrative.',
+  context:[
+    'Airlines handle three high-value bulk segments: ad-hoc groups of 10+ passengers, recurring series blocks for tour operators, and custom charters for corporate and community travel. Most carriers still run these through spreadsheets, email quotes and manual holds in the reservation system.',
+    'Working from three separate specifications — group, series and charter — I designed a single platform that combines customer self-service, sector-level revenue manager control and deep admin configurability.'
+  ],
+  objective:'Let groups negotiate, pay and manage passengers on their own — while protecting the airline\'s yield, releasing unpaid inventory automatically and giving revenue teams policy control without code releases.',
+  pains:[
+    ['Bulk ≠ retail checkout','Group inventory breaks when it\'s treated like a one-passenger checkout; price-sensitive groups need to negotiate over days.'],
+    ['Yield floors at risk','Managers could accidentally quote below what the customer had already offered.'],
+    ['Wasted manifest work','Passenger details were collected before payment, so effort went into quotes that were later abandoned.'],
+    ['Late validation','Invalid dates of birth, missing titles or duplicate emails in uploaded manifests failed only after submit — close to deadline.'],
+    ['Hidden series risk','One missed installment could cancel every PNR in a series, with no early warning in the interface.'],
+    ['Three specs, three mental models','Group, series and charter had separate entry points and inconsistent role names.']
+  ],
+  lanes:[
+    ['Customer / agent','Group booking',['Search flights','Flight details',{t:'Accept price or negotiate',k:'dec'},'Pending requests + expiry',{t:'1st payment → inventory hold',k:'sys'},'Upload manifest','Per-sector add-ons',{t:'Remaining installments',k:'end'}]],
+    ['Revenue manager','Sector queue',[{t:'Notified by sector',k:'sys'},'Review offer',{t:'Accept · counter · suggest flight · decline',k:'dec'},{t:'Floor guard on counter',k:'sys'},{t:'Customer notified',k:'end'}]],
+    ['Charter coordinator','Split-PNR',['Create request',{t:'Split-PNR or no-split',k:'dec'},'Admin consultation','Add-ons per PNR',{t:'Settle per PNR or together',k:'dec'},{t:'Per-PNR ticket issue',k:'end'}]],
+    ['Admin','Policy engine',['Rounds, expiry, limit %','Installments by role','Station → manager routing',{t:'Offboarding wizard',k:'end'}]]
+  ],
+  states:[
+    ['Negotiation',[['Pending','warn'],['Countered','info'],['Accepted','ok'],['Declined','bad'],['Expired','mute']]],
+    ['Booking',[['Payment pending','info'],['On hold','warn'],['Partially paid','dk'],['Ticketed','ok'],['Cancelled','bad']]]
+  ],
+  solutions:[
+    {t:'Two paths from flight details',s:'groupNegotiate',p:'Time-sensitive buyers accept the published fare and get a 10-minute payment lock; price-sensitive groups negotiate and land in Pending Requests with an explicit expiry.',
+      b:['Round budget visible up front (“Round 2 of 3”)','Live per-person and total tax-inclusive preview inside the modal','Mandatory reason when either side declines']},
+    {t:'Revenue manager queue with a floor guard',s:'groupHero',p:'Group and series requests share one sector-routed queue. Counters below the customer\'s own offer are blocked in the UI and on the server — before the error, not after.',
+      b:['Sorted by expiry, with red countdown badges','“Suggest flight” moves price-sensitive groups to lower-demand departures instead of losing them','Same rules apply symmetrically to customer and agent requests']},
+    {t:'Hold first, manifest later',s:'groupManifest',p:'Passenger details, seats, meals and baggage unlock only after the first payment places the booking on hold — so nobody fills in 40 names for a quote that never converts.',
+      b:['Manifest pre-flight validator flags row-level errors on upload','Inline cell fixes before committing to the booking','Add-ons chosen independently per sector']},
+    {t:'Visible financial risk',s:'groupSeries',p:'Series bookings get a liability banner and per-tranche countdowns that spell out exactly which PNRs are exposed if a payment is missed.',
+      b:['Customer vs. travel-agent installment splits shown clearly','Charter split-PNR keeps per-group autonomy, with a “settle selected PNRs together” option for one payer']},
+    {t:'Policy without code releases',s:'groupAdmin',p:'Commercial policy lives in a four-tab admin engine — negotiation, installments, sector routing and reminders — with guard-rails on every change.',
+      b:['Discard stays disabled until something changes; unsaved-changes prompt on navigation','Duplicate stations blocked within a region','A three-step disable wizard reassigns managers and open negotiations before offboarding']}
+  ],
+  sandbox:true,
+  beyond:[
+    ['Architecture','Unified booking model','Group PNR, series alternate ID and charter split-PNR under one My Bookings / Requests structure.'],
+    ['Data quality','Manifest pre-flight validator','Row-level schema checks with inline fixes before commit.'],
+    ['Risk','Series cascade banner','Per-tranche countdown and exposure summary across linked PNRs.'],
+    ['Admin safety','Offboarding wizard','Mandatory reassignment before a manager can be disabled.'],
+    ['Negotiation','Round & margin indicator','Remaining rounds, expiry and live totals inside the modal.'],
+    ['Payments','Consolidated charter checkout','Batch-settle selected split PNRs without losing per-PNR ticketing.'],
+    ['Localisation','True RTL mirroring','Timelines, routes and seat maps mirrored for the right-to-left language mode.']
+  ],
+  kpis:[['Negotiation success rate','Successful bookings vs. total requests, by manager and region.'],['Quote turnaround','Median time from customer offer to manager action.'],['Ancillary attach rate','Meals, seats and baggage revenue captured after first payment.'],['Installment completion','Held bookings that complete every tranche before departure.']],
+  outcomeHead:'Three booking specs became one coherent product and state model.',
+  outcome:['Designed a shared negotiation and state engine across group, series and charter','Defined the two-stage hold and manifest unlock that removes wasted data entry','Added seven enhancements beyond the brief to close operational gaps','Mapped nine notification events across in-app, email and SMS','Logged open items — partial-series cancellation, charter pricing basis, role naming — with owners and recommended resolutions'],
+  nums:[['3','Booking models'],['7','Beyond-brief features'],['9','Notification events'],['4','Executive KPIs']]
+},
+{
+  id:'loyalty', num:'03', cats:['enterprise'],
+  title:'Membership Rewards Studio',
+  type:'Enterprise web application',
+  short:'A configuration workspace for loyalty plans, rewards, pricing, discounts, membership tiers and eligibility — with validation and reusable patterns built in.',
+  tags:['Enterprise SaaS','Rule configuration','Design patterns','Validation'],
+  hero:'loyaltyHero',
+  meta:{Role:'Product design · Interaction design',Platform:'Desktop-first enterprise web',Users:'Programme managers, marketing ops, admins',Focus:'Configuration UX & reusable patterns'},
+  nda:'Client and programme details are confidential. Screens are recreated with sample data.',
+  context:[
+    'Business teams configure loyalty programmes — plans, tiers, earn-and-burn rules, rewards, pricing and discounts — that directly affect what customers pay and receive. Mistakes are expensive and often invisible until members complain.',
+    'The configuration had grown into long, disconnected forms. I redesigned it as a guided workspace with consistent patterns that scale across every configurable object.'
+  ],
+  objective:'Make complex programme configuration feel guided and safe: easy to set up, hard to get wrong, and consistent from one module to the next.',
+  pains:[
+    ['Scattered configuration','Plans, tiers, rewards and discounts lived in separate screens with no sense of the whole programme.'],
+    ['Silent rule conflicts','Overlapping discounts or non-ascending tier thresholds could be saved without warning.'],
+    ['Repetitive setup','Each module had its own table, form and status conventions, so every new screen meant re-learning.'],
+    ['No sense of impact','Admins couldn\'t preview who a rule would affect before publishing it.']
+  ],
+  lanes:[
+    ['Programme manager','Create a plan',['Basics','Tiers & thresholds','Earn & burn rules','Rewards catalogue','Eligibility',{t:'Validate',k:'sys'},{t:'Publish or schedule',k:'dec'},{t:'Live',k:'end'}]],
+    ['Admin','Govern',['Review draft','Check impact preview',{t:'Approve / send back',k:'dec'},{t:'Audit history',k:'end'}]]
+  ],
+  states:[['Configuration object',[['Draft','mute'],['In review','warn'],['Scheduled','info'],['Active','ok'],['Archived','dk']]]],
+  solutions:[
+    {t:'A guided plan builder',s:'loyaltyHero',p:'A stepper breaks a programme into the decisions that matter, with a live summary and validation panel that follows you through every step.',
+      b:['Steps show completion and errors at a glance','Plain-language IF / THEN rule builder for eligibility','Publish now or schedule with an effective date']},
+    {t:'Tiers with live validation',s:'loyaltyTiers',p:'Tiers are edited as an ordered ladder. Thresholds are checked as you type, and errors explain the fix in context rather than on save.',
+      b:['Ascending thresholds enforced with inline guidance','Benefits per tier compared side by side','Drag to reorder with keyboard alternatives']},
+    {t:'Reusable rule & table patterns',s:'loyaltyRules',p:'Pricing, discounts and rewards share one pattern: a status-aware table, a side-sheet editor and an impact preview — so every module feels familiar.',
+      b:['Consistent status language: Draft, Scheduled, Active, Archived','Bulk actions and filters shared across modules','Components documented for engineering handoff']}
+  ],
+  outcomeHead:'A consistent configuration system that scales across modules.',
+  outcome:['Designed the end-to-end configuration journey and IA for the programme workspace','Introduced validation and conflict checks at the point of entry','Defined reusable table, side-sheet, rule-builder and status patterns','Partnered with engineering through reviews and UI validation']
+},
+{
+  id:'flight', num:'04', cats:['operations','mobile','enterprise'],
+  title:'Disruption Control & Traveller Updates',
+  type:'Role-based operations & passenger workflows',
+  short:'Connecting operations teams and passengers through schedules, real-time status, delay recovery, notifications and reporting.',
+  tags:['Operations dashboards','Real-time status','Mobile','Notifications'],
+  hero:'flightHero',
+  meta:{Role:'Product design · IA · Prototyping',Platform:'Ops web console + passenger mobile',Users:'Ops controllers, station staff, passengers',Focus:'Exceptions, recovery & communication'},
+  nda:'Airline, flight numbers and operational data are anonymised. All figures are illustrative.',
+  context:[
+    'When a flight is delayed, operations teams juggle aircraft, crew, connections and communication at once — while passengers are left refreshing a status page.',
+    'I designed role-based experiences for operations staff and passengers that share one source of truth for schedules and status, so a decision in the control room shows up immediately in a passenger\'s pocket.'
+  ],
+  objective:'Help operations teams spot and resolve disruptions faster, and keep passengers informed with clear, actionable updates.',
+  pains:[
+    ['Everything looks equally urgent','Schedule boards listed every flight the same way, burying the few that needed attention.'],
+    ['Recovery decisions in the dark','Controllers couldn\'t easily see the downstream impact — connections, passengers — of each recovery option.'],
+    ['Inconsistent passenger messaging','Updates went out late or in different words across channels.'],
+    ['Reporting as an afterthought','Delay reasons and performance trends were hard to pull together.']
+  ],
+  lanes:[
+    ['Ops controller','Disruption',[{t:'Exception surfaces on board',k:'sys'},'Log delay code','Review impact',{t:'Retime · swap · rebook',k:'dec'},'Apply',{t:'Notify passengers',k:'end'}]],
+    ['Station staff','Ground',['Gate & boarding status','Update milestones',{t:'Status synced',k:'end'}]],
+    ['Passenger','Mobile',['My trip',{t:'Push: delay / gate change',k:'sys'},'View options',{t:'Rebook or keep',k:'dec'},{t:'Updated boarding pass',k:'end'}]]
+  ],
+  states:[['Flight status',[['Scheduled','mute'],['On time','ok'],['Boarding','info'],['Delayed','bad'],['Gate change','warn'],['Departed','dk']]]],
+  solutions:[
+    {t:'Exceptions-first operations board',s:'flightHero',p:'Delayed and at-risk flights rise to the top with the context controllers need — gate, connections and affected passengers — while on-time flights recede.',
+      b:['Status badges with consistent colour and wording','KPI strip for on-time performance and passengers affected','Passenger app mirrors the same status in plain language']},
+    {t:'Guided delay recovery',s:'flightRecovery',p:'A step-by-step flow from delay code to recovery action, comparing options by their impact on connections before anything is applied.',
+      b:['Retime, swap aircraft or rebook — with misconnect counts side by side','One action applies the change and triggers passenger notifications','Every decision captured for later reporting']},
+    {t:'Reporting that closes the loop',s:'flightReport',p:'On-time trends, delay reasons and notification volumes in one view, filterable by date and station.',
+      b:['Delay reasons grouped for root-cause conversations','Exports for leadership reviews']}
+  ],
+  outcomeHead:'One status model shared by the control room and the passenger.',
+  outcome:['Defined role-based IA for operations, station and passenger experiences','Designed delay recovery and notification flows end to end','Created dashboard and status patterns reused across modules','Supported engineering through handoff and UI reviews']
+},
+{
+  id:'cng', num:'05', cats:['mobile','operations'],
+  title:'CNG Customer & Operations Platform',
+  type:'Web & mobile service platform',
+  short:'Tank-level monitoring, flow-meter readings, refill requests, helpdesk support, customer management and fleet dispatch — for customers and operations alike.',
+  tags:['IoT telemetry','Field operations','Mobile app','Dispatch'],
+  hero:'cngHero',
+  meta:{Role:'Product design · UX/UI',Platform:'Customer mobile app + operations web',Users:'Commercial customers, ops team, dispatchers',Focus:'Monitoring, refills & support'},
+  nda:'Client and site data are confidential. Screens are recreated with sample data.',
+  context:[
+    'Commercial customers depend on compressed natural gas being there when they need it. Tank levels and flow-meter readings come from connected devices, but customers and operations teams had no shared, timely view of them.',
+    'I designed a mobile app for customers and a web platform for operations that turn raw telemetry into clear status, timely refills and traceable support.'
+  ],
+  objective:'Give customers confidence in their supply and give operations a single place to plan refills, dispatch the fleet and resolve issues.',
+  pains:[
+    ['Readings without meaning','Raw tank and meter numbers didn\'t tell customers whether they needed to act.'],
+    ['Refills by phone call','Requests arrived informally, with no status visibility for the customer.'],
+    ['Dispatch in spreadsheets','Matching trucks and drivers to refill requests was manual and error-prone.'],
+    ['Support without context','Helpdesk tickets weren\'t linked to the site, asset or reading in question.']
+  ],
+  lanes:[
+    ['Customer','Mobile',['Check tank level',{t:'Low-level alert',k:'sys'},'Request refill','Track status',{t:'Delivered + reading',k:'end'}]],
+    ['Operations','Web',['Refill queue',{t:'Prioritise by level',k:'sys'},'Assign truck & driver',{t:'Dispatch',k:'dec'},{t:'Confirm delivery',k:'end'}]],
+    ['Support','Helpdesk',['Ticket linked to site','Assign & track SLA',{t:'Resolve',k:'end'}]]
+  ],
+  states:[['Refill request',[['Requested','warn'],['Scheduled','info'],['Dispatched','dk'],['Delivered','ok'],['Cancelled','bad']]]],
+  solutions:[
+    {t:'Telemetry customers can read',s:'cngMobile',p:'Tank levels become simple gauges with a health state and an estimate of days remaining; low levels prompt a one-tap refill request.',
+      b:['Clear thresholds: healthy, refill soon, critical','Refill tracker from request to delivery','Raise a ticket from any tank or delivery']},
+    {t:'Operations & dispatch console',s:'cngHero',p:'Refill requests, live flow readings and fleet status in one console, prioritised by tank level so the most urgent sites go first.',
+      b:['Assign trucks and drivers from the queue','Flow-meter trends per site','Customer and asset management alongside dispatch']},
+    {t:'Helpdesk with context',s:'cngHelp',p:'Every ticket is tied to a site and asset, with SLA timers that keep follow-up visible.',
+      b:['SLA breach warnings before they happen','Shared status language with the customer app']}
+  ],
+  outcomeHead:'A shared view of supply for customers and operations.',
+  outcome:['Designed the customer mobile app and operations web platform end to end','Turned device telemetry into actionable states and alerts','Designed refill, dispatch and helpdesk workflows with consistent statuses','Worked with engineering on responsive behaviour and handoff']
+}
+];
+
+/* =========================================================
+   Research & process per project (Double Diamond, 5D)
+   ========================================================= */
+const processData = {
+  permit: {
+    research: [
+      ['Ethnographic observation', 'I spent time at the gate and the front-desk counter during the morning and evening sessions, watching how walkers queued, how staff took cash and how permits were noted by hand.'],
+      ['Contextual interviews', 'I talked with front-desk staff, park administrators and regular walkers where they actually work and walk, about the moments where the paper process slowed them down.'],
+      ['Requirements analysis', 'I took the requirements document apart rule by rule, mapped every permit status, and logged the gaps and contradictions as open questions for the client.']
+    ],
+    phases: {
+      Discover: 'Field observation at the gate and counter, stakeholder interviews and a full review of the requirements.',
+      Define: 'Four user roles, permit and payment status models, and a list of open questions agreed with the client.',
+      Design: 'End-to-end flows for visitors, members, staff and admins; wireframes through to high-fidelity UI.',
+      Develop: 'Worked with engineers on payment, QR and SMS states, and reviewed each build against the flows.',
+      Deliver: 'Shipped in three releases. Phase 2 is live and used daily at the park.'
+    }
+  },
+  group: {
+    research: [
+      ['Workplace shadowing', 'I sat with revenue managers while they handled real group requests, following the email threads, spreadsheets and manual holds they juggled to close a quote.'],
+      ['Stakeholder & agent interviews', 'I spoke with revenue managers, sales staff and travel agents to understand how negotiation, deposits and passenger lists really work for each side.'],
+      ['Specification analysis', 'I compared the three booking specifications line by line, found where they conflicted, and logged each issue with an owner and a recommended resolution.']
+    ],
+    phases: {
+      Discover: 'Shadowed revenue managers, interviewed agents and sales staff, and reviewed the three specifications.',
+      Define: 'One shared state model for group, series and charter, plus the key trade-offs written up as design principles.',
+      Design: 'Dual-path flight details, the negotiation modal, the manifest validator and the admin policy engine.',
+      Develop: 'Paired with engineers on the price floor rules, payment holds and the right-to-left language layout.',
+      Deliver: 'Handed over specs, a notification matrix and KPIs to track negotiation and payment success.'
+    }
+  },
+  loyalty: {
+    research: [
+      ['Contextual inquiry', 'I watched programme managers set up a real plan in the existing tool and noted where they hesitated, backtracked or kept notes on the side.'],
+      ['Task analysis', 'I broke plan setup into its underlying decisions to see which steps depended on each other and where mistakes were most expensive.'],
+      ['Heuristic review', 'I audited the existing configuration screens for inconsistency, missing validation and unclear states.']
+    ],
+    phases: {
+      Discover: 'Contextual inquiry with programme managers and a heuristic review of the existing tool.',
+      Define: 'The plan setup broken into decisions, with validation rules and a single status language.',
+      Design: 'A guided plan builder, a tier ladder editor and reusable table and rule patterns.',
+      Develop: 'Documented components and states for engineering and reviewed builds together.',
+      Deliver: 'A consistent configuration system the team can extend module by module.'
+    }
+  },
+  flight: {
+    research: [
+      ['Ethnographic observation', 'I observed the operations team during live disruptions to see how delays were spotted, discussed and resolved, and how long it took passengers to hear about them.'],
+      ['Station staff interviews', 'I spoke with ground and station staff about how status updates reach the gate and where information gets lost.'],
+      ['Passenger journey mapping', 'I mapped a delayed passenger\'s journey from first notification to rebooking, marking each point of uncertainty.']
+    ],
+    phases: {
+      Discover: 'Observed live disruptions, interviewed station staff and mapped the delayed-passenger journey.',
+      Define: 'One shared flight status model and the key questions a controller asks during a delay.',
+      Design: 'An exceptions-first operations board, guided delay recovery and passenger notifications.',
+      Develop: 'Worked through real-time states and edge cases with engineering.',
+      Deliver: 'Role-based experiences for operations, station staff and passengers on one status model.'
+    }
+  },
+  cng: {
+    research: [
+      ['Field visits', 'I visited customer sites and the operations desk to see how tank levels were checked, how refills were requested and how trucks were dispatched.'],
+      ['Customer interviews', 'I talked to commercial customers about what they actually need to know about their supply, and when.'],
+      ['Data review', 'I went through real tank and flow-meter readings to find the thresholds and patterns worth turning into alerts.']
+    ],
+    phases: {
+      Discover: 'Site visits, customer interviews and a review of real telemetry data.',
+      Define: 'Clear tank health states, refill statuses and the operations team\'s priorities.',
+      Design: 'The customer mobile app, the operations and dispatch console, and the helpdesk.',
+      Develop: 'Worked with engineering on responsive behaviour and live data states.',
+      Deliver: 'One shared view of supply for customers and the operations team.'
+    }
+  }
+};
+function diamondHTML(ph) {
+  const names = Object.keys(ph);
+  return `<div class="diamond">
+    <svg viewBox="0 0 800 190" role="img" aria-label="Double Diamond: Discover and Define, then Design, then Develop and Deliver">
+      <polygon points="20,95 200,15 380,95 200,175" fill="#eef4e4" stroke="#c9d6b4"/>
+      <polygon points="420,95 600,15 780,95 600,175" fill="#1c231c"/>
+      <line x1="200" y1="15" x2="200" y2="175" stroke="#c9d6b4" stroke-dasharray="4 5"/>
+      <line x1="600" y1="15" x2="600" y2="175" stroke="#3a463a" stroke-dasharray="4 5"/>
+      <circle cx="400" cy="95" r="34" fill="#c9f36b"/>
+      <g font-family="Manrope" font-weight="800" font-size="21" text-anchor="middle">
+        <text x="118" y="102" fill="#171916">Discover</text><text x="290" y="102" fill="#171916">Define</text>
+        <text x="400" y="101" fill="#171916" font-size="15">Design</text>
+        <text x="512" y="102" fill="#eef3e6">Develop</text><text x="688" y="102" fill="#c9f36b">Deliver</text>
+      </g>
+    </svg>
+    <div class="phases">${names.map((n, i) => `<div><small>${String(i + 1).padStart(2, '0')} · ${n}</small><p>${ph[n]}</p></div>`).join('')}</div>
+  </div>`;
+}
+
+/* =========================================================
+   Marquee
+   ========================================================= */
+/* Fit mocks: canvas between 640 and 860px wide, scaled to the container */
+const mockRO = 'ResizeObserver' in window ? new ResizeObserver(es => es.forEach(e => fitMock(e.target))) : null;
+function fitMock(m) {
+  const st = m.firstElementChild, w = m.clientWidth, h = m.clientHeight;
+  if (!st || !w || !h) return;
+  const base = Math.min(860, Math.max(640, w)), s = w / base;
+  st.style.width = base + 'px'; st.style.height = (h / s) + 'px'; st.style.transform = 'scale(' + s + ')';
+}
+function prepMocks(root = document) {
+  $$('.mock', root).forEach(m => {
+    if (m.firstElementChild && m.firstElementChild.classList.contains('stage')) return;
+    const st = document.createElement('div'); st.className = 'stage';
+    while (m.firstChild) st.appendChild(m.firstChild);
+    m.appendChild(st); fitMock(m); mockRO && mockRO.observe(m);
+  });
+}
+addEventListener('resize', () => $$('.mock').forEach(fitMock));
+
+function marquee() {
+  const items = [
+    `<div class="mini"><h5>Operations overview <span style="color:var(--muted)">•••</span></h5><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px"><div><small style="color:var(--muted)">Active</small><b style="display:block;font-family:Manrope;font-size:17px">2.4k</b></div><div><small style="color:var(--muted)">Requests</small><b style="display:block;font-family:Manrope;font-size:17px">864</b></div><div><small style="color:var(--muted)">Done</small><b style="display:block;font-family:Manrope;font-size:17px">92%</b></div></div><div style="margin-top:10px">${bars([30,50,40,70,60,85,55,75],[5])}</div></div>`,
+    `<div class="mini dark"><h5>My pass ${B('Active','ok')}</h5><div style="display:flex;gap:12px;align-items:center"><div style="background:#fff;border-radius:8px;padding:5px;width:78px">${qr(5)}</div><div><small style="color:#9ea993">ANNUAL · 2026</small><b style="display:block;font-family:Manrope;font-size:15px;margin-top:2px">Valid to Dec 31</b><small style="color:#9ea993">Single holder</small></div></div></div>`,
+    `<div class="mini lime"><h5>Member experience <span>★</span></h5><b style="display:block;font-family:Manrope;font-size:20px;letter-spacing:-.04em;line-height:1.05">More value in<br>every visit.</b><div style="display:flex;gap:6px;margin-top:14px">${['Silver','Gold','Platinum'].map((t,i)=>`<span style="font-size:10.5px;font-weight:700;padding:5px 9px;border-radius:99px;background:${i===1?'#171916':'rgba(255,255,255,.6)'};color:${i===1?'#c9f36b':'#171916'}">${t}</span>`).join('')}</div></div>`,
+    `<div class="mini"><h5>Flight status ${B('Live','ok')}</h5>${[['XA 214','HYD→BLR','Delayed','bad'],['XA 506','HYD→DXB','Boarding','info'],['XA 118','HYD→DEL','On time','ok']].map(r=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-top:1px solid #f0f1ea;font-size:11px"><b>${r[0]}</b><span style="color:var(--muted)">${r[1]}</span>${B(r[2],r[3])}</div>`).join('')}</div>`,
+    `<div class="mini"><h5>Tank telemetry ${B('2 low','bad')}</h5><div style="display:flex;gap:10px;align-items:center"><div style="width:74px">${ring(64,'#8fc23a','64%')}</div><div style="width:74px">${ring(18,'#e0603e','18%')}</div><div style="font-size:10.5px;color:var(--muted)">Flow<br><b style="color:var(--ink);font-size:14px;font-family:Manrope">41.2</b><br>m³/hr</div></div></div>`,
+    `<div class="mini"><h5>Negotiation ${B('Round 2/3','dk')}</h5><div style="display:flex;flex-direction:column;gap:6px;font-size:11px"><div class="field"><span>Customer offer</span><b>240</b></div><div class="field okf"><span>Counter</span><b>251</b></div><small style="color:#b2401f;font-weight:700">Expires in 2h 14m</small></div></div>`
+  ];
+  const html = items.join('');
+  $('#track').innerHTML = html + html;
+}
+
+/* =========================================================
+   Work grid
+   ========================================================= */
+function renderGrid() {
+  $('#grid').innerHTML = projects.map(p => `
+    <article class="card reveal" tabindex="0" role="button" data-id="${p.id}" data-cats="${p.cats.join(' ')}" aria-label="Open case study: ${p.title}">
+      <div class="card-art">${screens[p.hero]()}</div>
+      <div class="card-body">
+        <div class="card-meta"><span>${p.num} · ${p.type}</span></div>
+        <h3>${p.title}</h3>
+        <p>${p.short}</p>
+        <div class="card-foot"><div class="tags">${p.tags.slice(0, 3).map(t => `<span class="tag">${t}</span>`).join('')}</div><span class="go" aria-hidden="true">↗</span></div>
+      </div>
+    </article>`).join('');
+  $$('.card').forEach(c => {
+    c.addEventListener('click', () => openCase(c.dataset.id, c));
+    c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCase(c.dataset.id, c); } });
+    if (fine && !reduce) {
+      c.addEventListener('pointermove', e => {
+        const r = c.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        c.style.transform = `perspective(1200px) rotateX(${(-y * 3).toFixed(2)}deg) rotateY(${(x * 3).toFixed(2)}deg) translateY(-6px)`;
+      });
+      c.addEventListener('pointerleave', () => c.style.transform = '');
+    }
+  });
+  applyFilter('all');
+}
+function applyFilter(f) {
+  let first = true;
+  $$('.card').forEach(c => {
+    const show = f === 'all' || c.dataset.cats.split(' ').includes(f);
+    c.classList.toggle('hide', !show);
+    c.classList.toggle('featured', show && first && f === 'all');
+    if (show) first = false;
+  });
+  $$('.filter').forEach(b => b.setAttribute('aria-pressed', b.dataset.f === f));
+}
+$('#filters').addEventListener('click', e => { const b = e.target.closest('.filter'); if (b) applyFilter(b.dataset.f); });
+
+/* =========================================================
+   Case study drawer
+   ========================================================= */
+let current = -1, lastFocus = null;
+const stepHTML = s => typeof s === 'string' ? `<span class="st">${s}</span>` : `<span class="st ${s.k}">${s.t}</span>`;
+
+function caseHTML(p, i) {
+  const n1 = projects[(i + 1) % projects.length], n2 = projects[(i + 2) % projects.length];
+  let sec = 0; const num = () => String(++sec).padStart(2, '0');
+  return `
+  <header class="d-hero">
+    <span class="pill-tag"><i class="live"></i>Case study ${p.num} · ${p.type}</span>
+    <h2 id="caseTitle">${p.title}</h2>
+    <p class="lead">${p.short}</p>
+    <div class="meta">${Object.entries(p.meta).map(([k, v]) => `<div><small>${k}</small><span>${v}</span></div>`).join('')}</div>
+    <div class="d-shot">${screens[p.hero]()}</div>
+  </header>
+
+  <section class="blk"><div class="blk-h"><span class="num">${num()} / Context</span><h3>Where this started</h3></div>
+    <div class="blk-body">${p.context.map(t => `<p>${t}</p>`).join('')}</div></section>
+
+  <section class="blk"><div class="blk-h"><span class="num">${num()} / Objective</span><h3>What we set out to do</h3></div>
+    <div class="blk-body"><div class="objective"><span>${p.objective}</span></div></div></section>
+
+  ${processData[p.id] ? `<section class="blk"><div class="blk-h"><span class="num">${num()} / Research</span><h3>Going where the work happens</h3></div>
+    <div class="blk-body"><p>I start with ethnographic research: observing people in their own setting before deciding what to design. Here is what that looked like on this project.</p>
+      <div class="research">${processData[p.id].research.map((r, j) => `<div><span>R${j + 1}</span><h4>${r[0]}</h4><p>${r[1]}</p></div>`).join("")}</div></div></section>
+  <section class="blk"><div class="blk-h"><span class="num">${num()} / Process</span><h3>Double Diamond, in five steps</h3></div>
+    <div class="blk-body"><p>I follow the Double Diamond using a 5D process: Discover and Define to get the problem right, then Design, Develop and Deliver to get the solution right.</p>${diamondHTML(processData[p.id].phases)}</div></section>` : ""}
+
+  <section class="blk"><div class="blk-h"><span class="num">${num()} / Pain points</span><h3>What the research uncovered</h3></div>
+    <div class="blk-body"><div class="pains">${p.pains.map((x, j) => `<div class="pain"><span class="pn">P${j + 1}</span><h4>${x[0]}</h4><p>${x[1]}</p></div>`).join('')}</div></div></section>
+
+  <section class="blk"><div class="blk-h"><span class="num">${num()} / User & system flow</span><h3>How each role moves through it</h3></div>
+    <div class="blk-body"><div class="lanes">${p.lanes.map(l => `<div class="lane"><div class="lane-name">${l[0]}<small>${l[1]}</small></div><div class="steps">${l[2].map(stepHTML).join('<span class="ar">→</span>')}</div></div>`).join('')}</div>
+      <div class="legend"><span><i style="background:var(--paper)"></i>User step</span><span><i style="background:#fff8e6;border-color:#f1deaa"></i>Decision</span><span><i style="background:#eef3ff;border-color:#d4dffb"></i>System</span><span><i style="background:var(--lime);border-color:#b7e055"></i>Outcome</span></div>
+      ${p.states ? `<div class="states">${p.states.map(s => `<div class="state"><h5>${s[0]} states</h5><div>${s[1].map(x => B(x[0], x[1])).join('')}</div></div>`).join('')}</div>` : ''}
+    </div></section>
+
+  <section class="blk"><div class="blk-h"><span class="num">${num()} / Solution</span><h3>Design walkthrough</h3></div>
+    <div class="blk-body">${p.solutions.map((s, j) => `<div class="sol"><div class="sol-shot">${screens[s.s]()}</div><div><span class="sn">${String(j + 1).padStart(2, '0')}</span><h4>${s.t}</h4><p>${s.p}</p><ul>${s.b.map(x => `<li>${x}</li>`).join('')}</ul></div></div>`).join('')}</div></section>
+
+  ${p.sandbox ? `<section class="blk"><div class="blk-h"><span class="num">${num()} / Try the rules</span><h3>Floor guard &amp; installment sandbox</h3></div><div class="blk-body">${sandboxHTML()}</div></section>` : ''}
+
+  ${p.beyond ? `<section class="blk"><div class="blk-h"><span class="num">${num()} / Beyond the brief</span><h3>What I added that wasn't asked for</h3></div>
+    <div class="blk-body"><div class="beyond">${p.beyond.map(b => `<div class="by"><small>${b[0]}</small><h5>${b[1]}</h5><p>${b[2]}</p></div>`).join('')}</div></div></section>` : ''}
+
+  ${p.kpis ? `<section class="blk"><div class="blk-h"><span class="num">${num()} / Measuring success</span><h3>KPIs designed into the dashboard</h3></div>
+    <div class="blk-body"><div class="kpi-list">${p.kpis.map(k => `<div><h5>${k[0]}</h5><p>${k[1]}</p></div>`).join('')}</div></div></section>` : ''}
+
+  <section class="blk"><div class="blk-h"><span class="num">${num()} / Outcome & contribution</span><h3>Where it landed</h3></div>
+    <div class="blk-body"><div class="outcome"><h4>${p.outcomeHead}</h4><ul>${p.outcome.map(o => `<li>${o}</li>`).join('')}</ul></div>
+      ${p.nums ? `<div class="nums">${p.nums.map(n => `<div><b>${n[0]}</b><span>${n[1]}</span></div>`).join('')}</div>` : ''}
+    </div></section>
+
+  <section class="blk"><div class="blk-h"><span class="num">Next projects</span><h3>Keep exploring</h3></div>
+    <div class="blk-body"><div class="next">${[n1, n2].map(n => `<button data-next="${n.id}"><div class="mock-wrap" style="border-radius:14px;overflow:hidden">${screens[n.hero]()}</div><div class="nb"><div><small>${n.num} · ${n.type}</small><b>${n.title}</b></div><span class="go" aria-hidden="true">→</span></div></button>`).join('')}</div>
+      <p style="margin-top:28px"><button class="btn btn-ghost" data-close>← Back to all work</button></p></div></section>`;
+}
+
+function openCase(id, from) {
+  const i = projects.findIndex(p => p.id === id); if (i < 0) return;
+  if (from) lastFocus = from;
+  current = i;
+  const p = projects[i];
+  $('#caseBody').innerHTML = caseHTML(p, i);
+  prepMocks($('#caseBody'));
+  $('#caseIdx').textContent = `Case study ${p.num} / 0${projects.length}`;
+  $('#dScroll').scrollTop = 0;
+  document.body.classList.add('case-open');
+  $('#drawer').setAttribute('aria-hidden', 'false');
+  if (location.hash !== '#case-' + id) history.replaceState(null, '', '#case-' + id);
+  $$('[data-next]', $('#caseBody')).forEach(b => b.addEventListener('click', () => openCase(b.dataset.next)));
+  $$('[data-close]', $('#caseBody')).forEach(b => b.addEventListener('click', closeCase));
+  if (p.sandbox) initSandbox();
+  setTimeout(() => $('#closeCase').focus({ preventScroll: true }), 50);
+}
+function closeCase() {
+  if (current < 0) return;
+  document.body.classList.remove('case-open');
+  $('#drawer').setAttribute('aria-hidden', 'true');
+  current = -1;
+  history.replaceState(null, '', location.pathname + location.search);
+  if (lastFocus) lastFocus.focus({ preventScroll: true });
+}
+$('#closeCase').addEventListener('click', closeCase);
+$('#scrim').addEventListener('click', closeCase);
+$('#prevCase').addEventListener('click', () => openCase(projects[(current - 1 + projects.length) % projects.length].id));
+$('#nextCase').addEventListener('click', () => openCase(projects[(current + 1) % projects.length].id));
+document.addEventListener('keydown', e => {
+  if (current < 0) return;
+  if (e.key === 'Escape') closeCase();
+  if (e.key === 'Tab') { // focus trap
+    const f = $$('button, a[href], input, select, textarea, [tabindex="0"]', $('#drawer')).filter(el => el.offsetParent !== null);
+    if (!f.length) return;
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+  }
+});
+$('#dScroll').addEventListener('scroll', e => {
+  const el = e.target; const p = el.scrollTop / Math.max(1, el.scrollHeight - el.clientHeight);
+  $('#dProg').style.transform = `scaleX(${p})`;
+}, { passive: true });
+
+/* --- Sandbox (group booking) --- */
+function sandboxHTML() {
+  return `<div class="sandbox">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="sb-seg" role="group" aria-label="Payer type"><button type="button" data-payer="cust" aria-pressed="true">Customer · 100%</button><button type="button" data-payer="agent" aria-pressed="false">Agent · 40/60</button></div>
+      <div class="f-grid">
+        <div class="f"><label for="sbPax">Passengers <i>(min 10)</i></label><input id="sbPax" type="number" inputmode="numeric" value="10" min="1"></div>
+        <div class="f"><label for="sbFare">Published fare / pax</label><input id="sbFare" type="number" inputmode="numeric" value="257"></div>
+        <div class="f"><label for="sbOffer">Customer offer / pax</label><input id="sbOffer" type="number" inputmode="numeric" value="240"></div>
+        <div class="f"><label for="sbCounter">Manager counter / pax</label><input id="sbCounter" type="number" inputmode="numeric" value="251"></div>
+      </div>
+    </div>
+    <div class="sb-out" aria-live="polite">
+      <div class="sb-status" id="sbStatus"></div>
+      <div><small>Total group fare</small><div class="big" id="sbTotal"></div></div>
+      <div class="tranches" id="sbTr"></div>
+    </div>
+  </div>`;
+}
+function initSandbox() {
+  let payer = 'cust';
+  const fmt = v => v.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const calc = () => {
+    const pax = +$('#sbPax').value, fare = +$('#sbFare').value, offer = +$('#sbOffer').value, ctr = +$('#sbCounter').value;
+    const st = $('#sbStatus'); let err = '';
+    if (!(pax >= 10)) err = 'Group bookings need at least 10 passengers.';
+    else if (!(fare > 0 && offer > 0 && ctr > 0)) err = 'Enter fares greater than zero.';
+    else if (ctr < offer) err = 'You cannot negotiate less than the customer\'s offer (' + offer + ').';
+    else if (ctr > fare) err = 'Counter can\'t exceed the published fare (' + fare + ').';
+    st.classList.toggle('err', !!err);
+    if (err) { st.textContent = '✕ ' + err; $('#sbTotal').textContent = '—'; $('#sbTr').innerHTML = ''; return; }
+    const disc = ((fare - ctr) / fare * 100).toFixed(1), total = pax * ctr;
+    st.textContent = `✓ Valid counteroffer: ${ctr} / pax (${disc}% off published fare)`;
+    $('#sbTotal').textContent = fmt(total);
+    const split = payer === 'cust' ? [[100, 'At booking']] : [[40, 'At booking'], [60, 'Due before departure']];
+    $('#sbTr').innerHTML = split.map((s, k) => `<div class="tr"><span>Tranche ${k + 1} · ${s[0]}% <small style="display:inline;color:#9ea993">${s[1]}</small></span><b>${fmt(total * s[0] / 100)}</b></div>`).join('');
+  };
+  $$('#caseBody .sandbox input').forEach(i => i.addEventListener('input', calc));
+  $$('[data-payer]').forEach(b => b.addEventListener('click', () => {
+    payer = b.dataset.payer; $$('[data-payer]').forEach(x => x.setAttribute('aria-pressed', x === b)); calc();
+  }));
+  calc();
+}
+
+/* =========================================================
+   Contact form
+   ========================================================= */
+const form = $('#form');
+const rules = {
+  name: v => v.trim().length >= 2 ? '' : 'Please enter your name.',
+  email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? '' : 'Please enter a valid email address.',
+  type: v => v ? '' : 'Choose what you\'re reaching out about.',
+  message: v => v.trim().length >= 20 ? '' : `A little more detail, please — at least 20 characters (${v.trim().length}/20).`
+};
+const touched = {};
+function check(name) {
+  const wrap = $(`[data-field="${name}"]`), el = wrap.querySelector('input,select,textarea');
+  const err = rules[name](el.value);
+  const msg = name === 'message' ? $('#eMsg') : wrap.querySelector('.msg');
+  if (touched[name]) {
+    msg.textContent = err;
+    wrap.classList.toggle('bad', !!err);
+    wrap.classList.toggle('good', !err);
+    el.setAttribute('aria-invalid', !!err);
+  }
+  return !err;
+}
+Object.keys(rules).forEach(n => {
+  const el = $(`[data-field="${n}"]`).querySelector('input,select,textarea');
+  el.addEventListener('blur', () => { if (el.value) touched[n] = true; check(n); });
+  el.addEventListener('input', () => { if (touched[n]) check(n); if (n === 'message') $('#count').textContent = `${el.value.length} / 1200`; });
+  el.addEventListener('change', () => { touched[n] = true; check(n); });
+});
+// Delivery: FormSubmit (https://formsubmit.co) forwards each submission to this inbox.
+// It's posted as a plain form into a hidden frame, so no browser cross-site (CORS) rules can block it.
+// The very first submission triggers a one-time "Activate Form" email to the inbox owner.
+const MAIL_TO = 'sreejaporan@gmail.com';
+function postToInbox(fields) {
+  return new Promise(resolve => {
+    let fr = document.getElementById('fsFrame');
+    if (!fr) { fr = document.createElement('iframe'); fr.name = fr.id = 'fsFrame'; fr.title = 'Form delivery'; fr.hidden = true; document.body.appendChild(fr); }
+    const f = document.createElement('form');
+    f.method = 'POST'; f.action = 'https://formsubmit.co/' + MAIL_TO; f.target = 'fsFrame'; f.hidden = true; f.acceptCharset = 'UTF-8';
+    Object.entries(fields).forEach(([k, v]) => { const i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = v; f.appendChild(i); });
+    document.body.appendChild(f);
+    let finished = false;
+    const done = () => { if (finished) return; finished = true; fr.removeEventListener('load', done); f.remove(); resolve(); };
+    fr.addEventListener('load', done); setTimeout(done, 6000);
+    f.submit();
+  });
+}
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  Object.keys(rules).forEach(n => touched[n] = true);
+  const ok = Object.keys(rules).map(check).every(Boolean);
+  if (!ok) { const bad = $('.f.bad input, .f.bad select, .f.bad textarea'); bad && bad.focus(); return; }
+  const d = Object.fromEntries(new FormData(form));
+  const btn = $('#sendBtn');
+  btn.disabled = true; btn.classList.add('busy'); btn.innerHTML = 'Sending…';
+  await postToInbox({
+    name: d.name.trim(), email: d.email.trim(), inquiry: d.type, message: d.message.trim(),
+    _subject: `Portfolio enquiry: ${d.type} (${d.name.trim()})`, _template: 'table', _captcha: 'false'
+  });
+  btn.disabled = false; btn.classList.remove('busy'); btn.innerHTML = 'Send message <span class="arr">↗</span>';
+  $('#formCard').classList.add('sent');
+});
+$('#reset').addEventListener('click', () => {
+  form.reset(); Object.keys(touched).forEach(k => delete touched[k]);
+  $$('.f').forEach(f => f.classList.remove('bad', 'good')); $$('.f .msg').forEach(m => m.firstChild && m.id && (m.textContent = ''));
+  $('#eMsg').textContent = ''; $('#count').textContent = '0 / 1200';
+  $('#formCard').classList.remove('sent'); $('#fName').focus();
+});
+async function copy(text, label = 'Copied') {
+  try { await navigator.clipboard.writeText(text); }
+  catch { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch {} t.remove(); }
+  toast(label);
+}
+$$('.copy').forEach(b => b.addEventListener('click', () => copy(b.dataset.copy, `${b.dataset.copy} copied`)));
+let tt; function toast(m) { const t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2000); }
+
+/* =========================================================
+   Motion & chrome
+   ========================================================= */
+// Staggered headline
+$$('#headline .w>span').forEach((s, i) => s.style.animationDelay = (.15 + i * .09) + 's');
+
+// Ticker
+(() => {
+  const list = $('#tickerList'); const n = list.children.length - 1; let k = 0;
+  if (reduce) return;
+  setInterval(() => {
+    k++; list.style.transition = 'transform .6s cubic-bezier(.22,1,.36,1)'; list.style.transform = `translateY(-${k * 1.45}em)`;
+    if (k === n) setTimeout(() => { list.style.transition = 'none'; list.style.transform = 'translateY(0)'; k = 0; }, 650);
+  }, 2600);
+  // size window to widest item
+  const w = Math.max(...[...list.children].map(b => b.scrollWidth)); list.parentElement.style.width = w + 'px';
+})();
+
+// Scroll: progress + nav condense + active link
+const nav = $('#nav'), prog = $('#progress');
+const secs = ['work', 'about', 'experience', 'contact'].map(id => document.getElementById(id));
+function onScroll() {
+  const y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
+  prog.style.transform = `scaleX(${h > 0 ? y / h : 0})`;
+  nav.classList.toggle('condensed', y > 60);
+  let act = null; secs.forEach(s => { if (s.getBoundingClientRect().top < innerHeight * .4) act = s.id; });
+  $$('.links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + act));
+}
+addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+// Cursor spotlight
+if (fine && !reduce) {
+  const spot = $('#spot'); let tx = 0, ty = 0, x = 0, y = 0, raf;
+  addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; spot.classList.add('on'); if (!raf) raf = requestAnimationFrame(loop); }, { passive: true });
+  document.addEventListener('pointerleave', () => spot.classList.remove('on'));
+  function loop() { x += (tx - x) * .14; y += (ty - y) * .14; spot.style.transform = `translate3d(${x - 280}px,${y - 280}px,0)`; raf = Math.abs(tx - x) + Math.abs(ty - y) > .5 ? requestAnimationFrame(loop) : null; }
+}
+
+// Magnetic buttons
+if (fine && !reduce) $$('.magnetic').forEach(b => {
+  b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .22}px,${(e.clientY - r.top - r.height / 2) * .3 - 2}px)`; });
+  b.addEventListener('pointerleave', () => b.style.transform = '');
+});
+
+// Mobile menu
+const shell = $('#navShell'), tog = $('#menuToggle');
+tog.addEventListener('click', () => { const o = shell.classList.toggle('menu-open'); tog.setAttribute('aria-expanded', o); tog.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); });
+$$('.links a').forEach(a => a.addEventListener('click', () => { shell.classList.remove('menu-open'); tog.setAttribute('aria-expanded', false); }));
+
+// Reveal on scroll
+function reveals() {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+  $$('.reveal:not(.in)').forEach(el => io.observe(el));
+}
+
+$('#yr').textContent = new Date().getFullYear();
+marquee(); renderGrid(); prepMocks(); reveals();
+// Deep link to a case study
+const fromHash = () => { const m = location.hash.match(/^#case-(\w+)/); if (m) openCase(m[1]); };
+addEventListener('hashchange', fromHash); fromHash();
+</script>
+</body>
+</html>
